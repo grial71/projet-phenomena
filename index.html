@@ -15,13 +15,8 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -47,8 +42,7 @@
             flex-wrap: wrap;
         }
 
-        .translate-box,
-        .music-box {
+        .translate-box, .music-box {
             background: rgba(11, 22, 34, 0.85);
             border: 1px solid rgba(0, 210, 255, 0.3);
             border-radius: 14px;
@@ -56,38 +50,35 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+            min-width: 280px;
         }
 
-        .translate-box strong,
-        .music-box strong {
+        .translate-box strong, .music-box strong {
             display: block;
             margin-bottom: 10px;
             color: #00d2ff;
             font-size: 0.95rem;
         }
 
-        
-
-        
-
-        
-
-        
-
         .music-button {
             background: linear-gradient(135deg, #00d2ff, #007cf0);
             color: white;
-            padding: 12px 18px;
-            font-size: 1rem;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.35);
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
         }
 
-        .music-button:hover {
-            box-shadow: 0 0 24px rgba(0, 210, 255, 0.55);
+        .music-status {
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 8px;
+            color: #8da9c4;
+            text-align: center;
         }
-
-        .music-status,
-        
 
         .container {
             max-width: 950px;
@@ -98,7 +89,6 @@
             box-shadow: 0 0 50px rgba(0,0,0,1);
             border: 1px solid rgba(0, 210, 255, 0.3);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .header-image {
@@ -110,8 +100,7 @@
             border-radius: 50%;
             border: 3px solid #00d2ff;
             box-shadow: 0 0 30px rgba(0, 210, 255, 0.8);
-            animation: logoSpin 14s linear infinite;
-            transform-origin: center center;
+            animation: logoSpin 25s linear infinite;
         }
 
         h1 {
@@ -124,106 +113,12 @@
             margin-bottom: 5px;
         }
 
-        h2 {
-            color: #00d2ff;
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-
-        h3 {
-            color: #00d2ff;
-            margin-top: 0;
-            font-size: 1.4em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
         .subtitle {
             text-align: center;
             color: #8da9c4;
             margin-bottom: 60px;
             font-weight: bold;
             letter-spacing: 2px;
-        }
-
-        .recit-section {
-            margin-top: 80px;
-        }
-
-        .recit-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 60px;
-            gap: 40px;
-            background: rgba(0,0,0,0.3);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s ease;
-        }
-
-        .recit-step:hover {
-            border: 1px solid rgba(0, 210, 255, 0.4);
-            background: rgba(0,0,0,0.4);
-        }
-
-        .recit-step.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .recit-image-container {
-            flex: 1;
-            max-width: 48%;
-        }
-
-        .recit-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 210, 255, 0.6);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            aspect-ratio: 16/9;
-        }
-
-        .recit-text-container {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .recit-text-box {
-            background-color: rgba(255,255,255,0.02);
-            border-radius: 10px;
-            padding: 25px;
-            border-left: 4px solid #00d2ff;
-        }
-
-        .recit-step.reverse .recit-text-box {
-            border-left: none;
-            border-right: 4px solid #00d2ff;
-        }
-
-        .recit-text-only {
-            margin-bottom: 60px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 35px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .recit-text-only::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #00d2ff, transparent);
         }
 
         .experience-box {
@@ -235,143 +130,92 @@
             font-style: italic;
         }
 
-        .resources-section {
-            margin-top: 60px;
-            display: grid;
-            gap: 20px;
+        .recit-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            gap: 40px;
+            background: rgba(0,0,0,0.3);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
+
+        .recit-step.reverse { flex-direction: row-reverse; }
+
+        .recit-image {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 210, 255, 0.6);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .recit-text-box {
+            background-color: rgba(255,255,255,0.02);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #00d2ff;
+            flex: 1;
+        }
+
+        .recit-step.reverse .recit-text-box {
+            border-left: none;
+            border-right: 4px solid #00d2ff;
+        }
+
+        .recit-text-only {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 4px solid #00d2ff;
+            margin-bottom: 40px;
+        }
+
+        h3 { color: #00d2ff; text-transform: uppercase; margin-top: 0; }
 
         .resource-card {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-        }
-
-        .resource-card p {
-            margin-bottom: 18px;
-            color: #c9d8e8;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
         }
 
         .resource-button {
             display: inline-block;
-            text-decoration: none;
-            padding: 14px 24px;
+            background: #25D366;
             color: white;
-            background: linear-gradient(135deg, #25D366, #1da851);
-            box-shadow: 0 0 18px rgba(37, 211, 102, 0.35);
-        }
-
-        .resource-button.linkedin {
-            background: linear-gradient(135deg, #0a66c2, #004182);
-            box-shadow: 0 0 18px rgba(10, 102, 194, 0.35);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
         }
 
         .cta-container {
             text-align: center;
-            margin-top: 60px;
-            padding: 35px;
-            background: rgba(37, 211, 102, 0.1);
-            border-radius: 15px;
+            padding: 40px;
             border: 1px dashed #25D366;
+            border-radius: 15px;
+            margin-top: 40px;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #25D366;
+            background: #25D366;
             color: white;
-            padding: 20px 45px;
+            padding: 18px 40px;
             text-decoration: none;
-            border-radius: 60px;
-            font-size: 1.3em;
+            border-radius: 50px;
             font-weight: bold;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
         }
 
-        .footer-note {
-            font-size: 0.8em;
-            color: #5d7891;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .note-securite {
-            font-size: 0.9em;
-            color: #ff4b2b;
-            font-style: italic;
-            margin-top: 10px;
-            display: block;
-        }
-
-        
-
-        @media (max-width: 900px) {
-            .container {
-                padding: 25px;
-            }
-
-            .recit-step,
-            .recit-step.reverse {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .recit-image-container {
-                max-width: 100%;
-                width: 100%;
-            }
-
-            .recit-text-container {
-                width: 100%;
-                padding: 0;
-            }
-
-            .recit-step.reverse .recit-text-box {
-                border-right: none;
-                border-left: 4px solid #00d2ff;
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            .top-bar {
-                margin-top: 10px;
-            }
-
-            .container {
-                margin: 15px auto 25px;
-                padding: 18px;
-                border-radius: 14px;
-            }
-
-            .header-image {
-                width: 110px;
-                height: 110px;
-            }
-
-            h1 {
-                font-size: 2em;
-                letter-spacing: 1px;
-            }
-
-            h2 {
-                font-size: 1.5em;
-            }
-
-            h3 {
-                font-size: 1.1em;
-            }
-
-            .cta-button,
-            .resource-button,
-            .music-button {
-                width: 100%;
-                text-align: center;
-            }
+        @media (max-width: 850px) {
+            .recit-step, .recit-step.reverse { flex-direction: column; }
+            .top-bar { justify-content: center; }
         }
     </style>
 </head>
@@ -383,11 +227,18 @@
             <div id="google_translate_element"></div>
         </div>
 
+        <div class="music-box">
+            <strong>🎵 Ambiance Sonore</strong>
+            <button id="musicToggle" class="music-button">▶ Activer la musique</button>
+            <span id="musicStatus" class="music-status">Prêt pour l'immersion</span>
+        </div>
+    </div>
+
     <div class="container">
         <img src="images/logo-phenomena.jpeg" alt="Logo" class="header-image">
 
         <h1>Projet Phenomena</h1>
-        <p class="subtitle">Investigation &amp; Parole Libre</p>
+        <p class="subtitle">Investigation & Parole Libre</p>
 
         <p>Bienvenue. Mon nom est <strong>Michel</strong>. Je dédie cet espace à la compréhension des phénomènes qui échappent aux explications conventionnelles.</p>
 
@@ -396,79 +247,60 @@
         </div>
 
         <section class="recit-section">
-            <h2>Mon Récit Visuel : La Simulation</h2>
-            <p style="text-align:center; color: #8da9c4; margin-bottom: 50px;">
-                Découvrez la reconstitution de mon expérience vécue en 1974.
-            </p>
-
             <div class="recit-step">
-                <div class="recit-image-container">
-                    <img src="images/maison-enfance.jpg" alt="Simulation : Michel jouant en 1974" class="recit-image">
-                </div>
-                <div class="recit-text-container">
-                    <div class="recit-text-box">
-                        <h3>Scène 1 : L'Innocence</h3>
-                        <p>C'est ici que tout a commencé, devant la maison familiale au 7 Avenue Caroline, en 1974. J'étais un enfant de 6 ans, jouant innocemment par terre, dans une atmosphère paisible d'Île-de-France.</p>
-                    </div>
+                <img src="images/maison-enfance.jpg" alt="1974" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Scène 1 : L'Innocence</h3>
+                    <p>C'est ici que tout a commencé, devant la maison familiale au 7 Avenue Caroline, en 1974. J'étais un enfant de 6 ans, jouant innocemment par terre, dans une atmosphère paisible d'Île-de-France.</p>
                 </div>
             </div>
 
             <div class="recit-step reverse">
-                <div class="recit-image-container">
-                    <img src="images/nuit-attente-corrigee.png" alt="Simulation : L'attente nocturne sécurisée" class="recit-image">
-                </div>
-                <div class="recit-text-container">
-                    <div class="recit-text-box">
-                        <h3>Scène 2 : L'Architecture du Sommeil</h3>
-                        <p>Plus tard cette nuit-là, vers 22h, j'étais totalement éveillé et conscient, allongé dans ce lit formé par deux fauteuils unis. Mes parents dormaient immédiatement à côté. Le silence était absolu.</p>
-                    </div>
+                <img src="images/nuit-attente-corrigee.png" alt="Nuit" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Scène 2 : L'Architecture du Sommeil</h3>
+                    <p>Vers 22h, j'étais totalement éveillé dans mon lit formé par deux fauteuils unis. Nous étions installés en longueur par rapport à la fenêtre. Mes parents dormaient juste à côté ; je pouvais voir le visage de ma maman juste en face de moi, à quelques centimètres.</p>
                 </div>
             </div>
 
             <div class="recit-step">
-                <div class="recit-image-container">
-                    <img src="images/flash-intrusion-corrigee.png" alt="Simulation : L'intrusion lumineuse" class="recit-image">
-                </div>
-                <div class="recit-text-container">
-                    <div class="recit-text-box">
-                        <h3>Scène 3 : L'Intrusion Lumineuse Absolue</h3>
-                        <p>Soudain, une lumière d'une puissance aveuglante a envahi la fenêtre. Mon corps s'est figé, immobilisé, le regard bloqué vers le plafond. Un mur opaque de lumière blanche avait effacé tous les contours de la pièce.</p>
-                    </div>
+                <img src="images/flash-intrusion-corrigee.png" alt="Lumière" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Scène 3 : L'Intrusion Lumineuse Absolue</h3>
+                    <p>Soudain, une lumière aveuglante transforme la fenêtre en un mur blanc opaque. Mon corps se fige instantanément, le ventre vers le haut. J'essaie désespérément d'appeler ma maman, mais aucun son ne sort. Seule ma tête peut pivoter légèrement pour la voir dormir, inconsciente du phénomène.</p>
                 </div>
             </div>
 
             <div class="recit-text-only">
                 <h3>Scène 4 : Les Visiteurs et le Tunnel</h3>
-                <p>Alors que je fixais le plafond, trois silhouettes d'une taille d'enfant avec des têtes plus volumineuses sont entrées en flottant. Deux m'ont tenu fermement les bras, tandis que la troisième flottait au-dessus de mon torse. Je ne ressentais pas une peur précise, mais une angoisse profonde de ne pas pouvoir appeler à l'aide.</p>
-                <p>Dès qu'ils furent positionnés, ma vision s'est engouffrée dans un <strong>tunnel en couleur à une vitesse extrême</strong>. Ce passage a été fulgurant, comme si tout se déroulait en à peine 5 minutes.</p>
-                <span class="note-securite">* Note : La simulation visuelle est ici remplacée par le texte suite aux restrictions de sécurité des outils de génération d'images.</span>
+                <p>Trois silhouettes d'une taille d'enfant avec des têtes volumineuses sont entrées en flottant. Deux m'ont tenu les bras, tandis que la troisième flottait au-dessus de mon torse. Je ne ressentais pas une peur précise, mais une angoisse profonde liée à mon impuissance.</p>
+                <p>Soudain, ma vision s'est engouffrée dans un <strong>tunnel en couleur à une vitesse extrême</strong>. Ce passage a été fulgurant, comme si tout s'accélérait brutalement.</p>
             </div>
 
             <div class="recit-text-only">
                 <h3>Scène 5 : Le Réveil et les Traces Physiques</h3>
-                <p>Le réveil a été brusque. Bien que l'expérience m'ait semblé durer quelques instants, il faisait déjà jour et la lumière passait par les lamelles des volets. J'ai crié pour appeler ma maman. Elle s'est réveillée en pensant que j'avais fait un cauchemar, mais en allumant la lumière, le choc fut total : <strong>mes taies d'oreiller étaient pleines de sang</strong>.</p>
-                <p>Ce sang provenait de mon nez. À partir de cette nuit de 1974, j'ai souffert d'hémorragies nasales très fréquentes, et ce, jusqu'à l'âge de mes 18 ans. Ces traces physiques sont restées le témoignage silencieux de cette rencontre inexpliquée.</p>
-                <span class="note-securite">* Note : La simulation visuelle est ici remplacée par le texte suite aux restrictions de sécurité des outils de génération d'images.</span>
+                <p>Le réveil fut brusque. Il faisait déjà jour. J'ai crié pour appeler ma maman. Elle s'est réveillée en pensant à un cauchemar, mais en allumant la lumière, le choc fut total : <strong>mes taies d'oreiller étaient couvertes de sang</strong>.</p>
+                <p>Ce sang provenait de mon nez. Suite à cette nuit de 1974, j'ai souffert d'hémorragies nasales chroniques jusqu'à l'âge de 18 ans, témoignant physiquement de l'événement.</p>
             </div>
         </section>
 
         <section class="resources-section">
             <div class="resource-card">
                 <h3>Playlist YouTube OVNI</h3>
-                <p>Ce bouton donne accès à la playlist vidéo consacrée aux OVNI, pour consulter l'ensemble des contenus liés au sujet, aux témoignages et aux analyses.</p>
-                <a class="resource-button" href="https://www.youtube.com/watch?v=VjPm4nRoJqU&list=PL0X9_wKvS3FdVvSBHp7-tj9ieRsBlQp1e" target="_blank" rel="noopener noreferrer">▶ Ouvrir la playlist YouTube</a>
+                <p>Consultez l'ensemble des contenus liés au sujet, témoignages et analyses.</p>
+                <a class="resource-button" href="https://www.youtube.com/watch?v=VjPm4nRoJqU&list=PL0X9_wKvS3FdVvSBHp7-tj9ieRsBlQp1e" target="_blank">▶ Ouvrir la playlist</a>
             </div>
 
             <div class="resource-card">
-                <h3>Publication LinkedIn – Antigravité et propulsion</h3>
-                <p>Ce bouton mène vers ma publication LinkedIn sur les hypothèses de propulsion avancée, l'antigravité, la MHD, les systèmes à annulation de masse et les réflexions autour des technologies de rupture.</p>
-                <a class="resource-button linkedin" href="https://www.linkedin.com/feed/update/urn:li:activity:7447292991410659328/?originTrackingId=GZGnwWmFSZubgiBmOLKjHQ%3D%3D" target="_blank" rel="noopener noreferrer">in Consulter la publication LinkedIn</a>
+                <h3>Publication LinkedIn – Propulsion</h3>
+                <p>Hypothèses sur l'antigravité et les technologies de rupture.</p>
+                <a class="resource-button" style="background: #0a66c2;" href="https://www.linkedin.com/feed/update/urn:li:activity:7447292991410659328/" target="_blank">in Voir la publication</a>
             </div>
         </section>
 
         <div class="cta-container">
-            <p style="margin-bottom: 25px;">Rejoignez la communauté pour échanger :</p>
-            <a href="https://chat.whatsapp.com/K5LLDBxJdlc6T2d2e2HUVG" class="cta-button" target="_blank" rel="noopener noreferrer">Accéder au Groupe</a>
+            <p>Rejoignez la communauté Phenomena :</p>
+            <a href="https://chat.whatsapp.com/K5LLDBxJdlc6T2d2e2HUVG" class="cta-button" target="_blank">Accéder au Groupe WhatsApp</a>
         </div>
 
         <div class="footer-note">
@@ -478,45 +310,38 @@
 
     <audio id="backgroundMusic" loop>
         <source src="sons/ambiance-phenomena.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'audio HTML5.
     </audio>
 
     <script>
-        
-
-            const translateUrl = `https://translate.google.com/translate?sl=fr&tl=${lang}&u=${encodeURIComponent(currentUrl)}`;
-            window.open(translateUrl, '_blank', 'noopener,noreferrer');
-        }
-
         const music = document.getElementById('backgroundMusic');
         const musicToggle = document.getElementById('musicToggle');
         const musicStatus = document.getElementById('musicStatus');
         let isPlaying = false;
+        music.volume = 0.3;
 
         musicToggle.addEventListener('click', async () => {
-            try {
-                if (isPlaying) {
-                    music.pause();
-                    musicToggle.textContent = '🎵 Activer la musique';
-                    musicStatus.textContent = 'Musique arrêtée';
-                } else {
+            if (isPlaying) {
+                music.pause();
+                musicToggle.textContent = '▶ Activer la musique';
+                musicStatus.textContent = 'Musique arrêtée';
+            } else {
+                try {
                     await music.play();
                     musicToggle.textContent = '🔇 Couper la musique';
                     musicStatus.textContent = 'Musique en lecture';
+                } catch (e) {
+                    musicStatus.textContent = 'Cliquez à nouveau pour activer';
                 }
-                isPlaying = !isPlaying;
-            } catch (error) {
-                musicStatus.textContent = 'Lecture bloquée par le navigateur, clique à nouveau';
             }
+            isPlaying = !isPlaying;
         });
-    
-    <script>
+
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'fr',
                 includedLanguages: 'fr,en,es',
-                autoDisplay: false,
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
             }, 'google_translate_element');
         }
     </script>
