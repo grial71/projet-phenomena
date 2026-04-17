@@ -66,34 +66,13 @@
             font-size: 0.95rem;
         }
 
-        .lang-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        
 
-        .lang-btn,
-        .music-button,
-        .resource-button {
-            border: none;
-            cursor: pointer;
-            border-radius: 999px;
-            font-weight: bold;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-        }
+        
 
-        .lang-btn {
-            background: rgba(0, 210, 255, 0.14);
-            color: #e0f7ff;
-            padding: 10px 14px;
-            border: 1px solid rgba(0, 210, 255, 0.35);
-        }
+        
 
-        .lang-btn:hover,
-        .music-button:hover,
-        .resource-button:hover {
-            transform: translateY(-2px);
-        }
+        
 
         .music-button {
             background: linear-gradient(135deg, #00d2ff, #007cf0);
@@ -108,12 +87,7 @@
         }
 
         .music-status,
-        .translate-note {
-            display: block;
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: #a7c7e7;
-        }
+        
 
         .container {
             max-width: 950px;
@@ -406,20 +380,8 @@
     <div class="top-bar">
         <div class="translate-box">
             <strong>🌍 Traduction Google</strong>
-            <div class="lang-buttons">
-                <button class="lang-btn" type="button" onclick="openGoogleTranslate('fr')">Français</button>
-                <button class="lang-btn" type="button" onclick="openGoogleTranslate('en')">English</button>
-                <button class="lang-btn" type="button" onclick="openGoogleTranslate('es')">Español</button>
-            </div>
-            <span class="translate-note">Le traducteur Google intégré ne réagit pas de façon fiable en page locale. Ces boutons ouvrent Google Traduction sur l'adresse de la page quand le site est publié en ligne.</span>
+            <div id="google_translate_element"></div>
         </div>
-
-        <div class="music-box">
-            <strong>🎵 Ambiance sonore</strong>
-            <button id="musicToggle" class="music-button" type="button">🎵 Activer la musique</button>
-            <span id="musicStatus" class="music-status">Musique arrêtée</span>
-        </div>
-    </div>
 
     <div class="container">
         <img src="images/logo-phenomena.jpeg" alt="Logo" class="header-image">
@@ -520,13 +482,7 @@
     </audio>
 
     <script>
-        function openGoogleTranslate(lang) {
-            const currentUrl = window.location.href;
-
-            if (currentUrl.startsWith('file:')) {
-                alert("Pour utiliser Google Traduction, il faut d'abord publier la page en ligne ou la lancer sur une adresse web accessible. En local sur file://, Google Traduction ne peut pas traduire la page correctement.");
-                return;
-            }
+        
 
             const translateUrl = `https://translate.google.com/translate?sl=fr&tl=${lang}&u=${encodeURIComponent(currentUrl)}`;
             window.open(translateUrl, '_blank', 'noopener,noreferrer');
@@ -553,7 +509,18 @@
                 musicStatus.textContent = 'Lecture bloquée par le navigateur, clique à nouveau';
             }
         });
+    
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'fr,en,es',
+                autoDisplay: false,
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
