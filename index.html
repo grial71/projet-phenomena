@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Phenomena - Investigación y Memoria</title>
+
+    <style>
+        @keyframes spaceMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes logoSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.75;
+            color: #e7eef7;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            background-color: #0b1622;
+            background-image: url('images/fond-etoiles.gif');
+            background-size: 120%;
+            background-attachment: fixed;
+            animation: spaceMove 60s ease-in-out infinite;
+        }
+
+        .top-bar {
+            max-width: 1180px;
+            margin: 16px auto 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .translate-box,
+        .music-box {
+            background: rgba(11, 22, 34, 0.88);
+            border: 1px solid rgba(0, 210, 255, 0.26);
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 0 24px rgba(0,0,0,0.45);
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+            min-width: 280px;
+            flex: 1;
+        }
+
+        .translate-box strong,
+        .music-box strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #00d2ff;
+            font-size: 0.96rem;
+            letter-spacing: 0.5px;
+        }
+
+        .music-button {
+            background: linear-gradient(135deg, #00d2ff, #007cf0);
+            color: white;
+            padding: 11px 16px;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        .music-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 18px rgba(0, 210, 255, 0.35);
+        }
+
+        .music-status {
+            font-size: 0.78rem;
+            display: block;
+            margin-top: 8px;
+            color: #8da9c4;
+            text-align: center;
+        }
+
+        .navigation-container {
+            max-width: 1180px;
+            margin: 0 auto 24px;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 100%;
+            background: rgba(0, 210, 255, 0.10);
+            border: 2px solid #00d2ff;
+            color: #00d2ff;
+            padding: 13px 16px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .menu-btn {
+            background: rgba(0, 210, 255, 0.08);
+            border: 2px solid #00d2ff;
+            color: #00d2ff;
+            padding: 12px 22px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+            letter-spacing: 0.6px;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: #00d2ff;
+            color: #07121d;
+            box-shadow: 0 0 18px rgba(0, 210, 255, 0.45);
+        }
+
+        .submenu-area {
+            display: none;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .submenu-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+            color: #ffffff;
+            padding: 9px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submenu-btn:hover {
+            background: rgba(37, 211, 102, 0.18);
+            border-color: #25D366;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 18px auto 42px;
+            background: rgba(11, 22, 34, 0.88);
+            padding: 52px;
+            border-radius: 24px;
+            box-shadow: 0 0 56px rgba(0,0,0,0.95);
+            border: 1px solid rgba(0, 210, 255, 0.28);
+            backdrop-filter: blur(10px);
+        }
+
+        .content-section {
+            display: none;
+            animation: slideUp 0.45s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .header-image {
+            display: block;
+            margin: 0 auto 28px auto;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #00d2ff;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.75);
+            animation: logoSpin 25s linear infinite;
+        }
+
+        h1 {
+            color: #00d2ff;
+            text-align: center;
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8da9c4;
+            margin-bottom: 42px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            color: #00d2ff;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            color: #00d2ff;
+            text-transform: uppercase;
+            margin-top: 0;
+            letter-spacing: 0.8px;
+        }
+
+        .lead-box {
+            background: rgba(0, 210, 255, 0.08);
+            border-left: 5px solid #00d2ff;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 30px;
+            font-size: 1.04rem;
+        }
+
+        .experience-box {
+            background-color: rgba(0, 210, 255, 0.09);
+            border-radius: 14px;
+            padding: 28px;
+            border-left: 5px solid #00d2ff;
+            margin: 28px 0 38px;
+            font-style: italic;
+            box-shadow: inset 0 0 25px rgba(255,255,255,0.02);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin: 30px 0 40px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0, 210, 255, 0.18);
+            padding: 24px;
+            border-radius: 16px;
+        }
+
+        .recit-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 46px;
+            gap: 34px;
+            background: rgba(0,0,0,0.26);
+            padding: 26px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .recit-step.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .recit-image {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 14px;
+            border: 2px solid rgba(0, 210, 255, 0.55);
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            box-shadow: 0 0 22px rgba(0,0,0,0.35);
+        }
+
+        .recit-text-box {
+            background-color: rgba(255,255,255,0.02);
+            padding: 22px;
+            border-radius: 12px;
+            border-left: 4px solid #00d2ff;
+            flex: 1;
+        }
+
+        .recit-step.reverse .recit-text-box {
+            border-left: none;
+            border-right: 4px solid #00d2ff;
+        }
+
+        .recit-text-only {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 34px;
+            border-radius: 16px;
+            border-left: 4px solid #00d2ff;
+            margin-bottom: 28px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .gallery-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0, 210, 255, 0.18);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 14px;
+            font-size: 0.94rem;
+            color: #cfe7ff;
+        }
+
+        .cta-container {
+            text-align: center;
+            padding: 38px;
+            border: 1px dashed #25D366;
+            border-radius: 16px;
+            margin-top: 34px;
+            background: rgba(37, 211, 102, 0.05);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.32);
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            color: #8da9c4;
+            font-size: 0.92rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 22px;
+        }
+
+        @media (max-width: 980px) {
+            .container {
+                padding: 34px;
+            }
+
+            .info-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recit-step,
+            .recit-step.reverse {
+                flex-direction: column;
+            }
+
+            .recit-step.reverse .recit-text-box {
+                border-right: none;
+                border-left: 4px solid #00d2ff;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .top-bar {
+                justify-content: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-menu {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .main-menu.open {
+                display: flex;
+            }
+
+            .menu-btn {
+                width: 100%;
+                border-radius: 14px;
+            }
+
+            .submenu-area {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .submenu-btn {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2.1em;
+            }
+
+            .container {
+                padding: 24px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="translate-box">
+            <strong>🌍 Traducción Google</strong>
+            <div id="google_translate_element"></div>
+        </div>
+
+        <div class="music-box">
+            <strong>🎵 Ambiente sonoro</strong>
+            <button id="musicToggle" class="music-button">▶ Activar la música</button>
+            <span id="musicStatus" class="music-status">Listo para la inmersión</span>
+        </div>
+    </div>
+
+    <div class="navigation-container">
+        <button class="menu-toggle" onclick="toggleMainMenu()">☰ Abrir el menú</button>
+
+        <div class="main-menu" id="mainMenu">
+            <button class="menu-btn active" onclick="openNav('nav-inicio', this)">🏠 Inicio</button>
+            <button class="menu-btn" onclick="openNav('nav-relato', this)">📜 Relato principal</button>
+            <button class="menu-btn" onclick="openNav('nav-galeria', this)">🖼 Galería</button>
+            <button class="menu-btn" onclick="openNav('nav-casos', this)">🗂 Casos</button>
+        </div>
+
+        <div id="nav-relato" class="submenu-area">
+            <button class="submenu-btn" onclick="showPage('page-introduccion')">Introducción</button>
+            <button class="submenu-btn" onclick="showPage('page-cronologia')">Cronología 1974</button>
+            <button class="submenu-btn" onclick="showPage('page-consecuencias')">Final y consecuencias</button>
+        </div>
+
+        <div id="nav-galeria" class="submenu-area">
+            <button class="submenu-btn" onclick="showPage('page-galeria')">Fotos y visuales</button>
+        </div>
+
+        <div id="nav-casos" class="submenu-area">
+            <button class="submenu-btn" onclick="showPage('page-casos')">Vista general</button>
+            <button class="submenu-btn" onclick="showPage('page-caso-1')">Caso 1</button>
+            <button class="submenu-btn" onclick="showPage('page-caso-2')">Caso 2</button>
+            <button class="submenu-btn" onclick="showPage('page-caso-3')">Caso 3</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <img src="images/logo-phenomena.jpeg" alt="Logo Phenomena" class="header-image">
+
+        <h1>Proyecto Phenomena</h1>
+        <p class="subtitle">Investigación • Memoria • Palabra libre</p>
+
+        <div id="page-inicio" class="content-section active">
+            <div class="lead-box">
+                <p>
+                    Bienvenido. Mi nombre es <strong>Michel</strong>. Dedico este espacio a la comprensión
+                    de los fenómenos que escapan a las explicaciones convencionales, a la memoria de los hechos vividos,
+                    a la transmisión de testimonios y a la apertura de un lugar donde cada persona pueda expresarse
+                    con respeto, prudencia y sinceridad.
+                </p>
+            </div>
+
+            <div class="experience-box">
+                “En 1974, a la edad de 6 años, viví una experiencia que redefinió mi visión de la realidad.
+                Este sitio es un intento de reconstrucción, análisis y transmisión de esa experiencia
+                y de otros elementos que podrán añadirse progresivamente.”
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Objetivo del proyecto</h3>
+                    <p>
+                        Estructurar un espacio visual, narrativo y evolutivo para presentar un testimonio central,
+                        relacionar elementos, integrar otros casos y permitir una expresión más libre
+                        en torno a fenómenos inexplicables.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Enfoque</h3>
+                    <p>
+                        El proyecto busca conservar la memoria de una vivencia personal,
+                        abriendo al mismo tiempo la puerta a otros relatos, comparaciones, observaciones
+                        y documentación progresiva, siempre con prudencia y sentido del análisis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>Presentación general</h3>
+                <p>
+                    Esta página ha sido pensada para ser amplia y evolutiva. Reúne el relato principal,
+                    las imágenes clave, el desenlace de la experiencia y un menú
+                    que permitirá añadir más adelante otros casos, dossiers, testimonios, visuales
+                    o elementos de contexto.
+                </p>
+            </div>
+
+            <div class="cta-container">
+                <p>Acceso directo:</p>
+
+                <a href="https://chat.whatsapp.com/K5LLDBxJdlc6T2d2e2HUVG"
+                   class="cta-button" target="_blank">
+                   💬 Grupo WhatsApp
+                </a>
+
+                <br><br>
+
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7447292991410659328/"
+                   class="cta-button" style="background:#0a66c2;" target="_blank">
+                   🔗 Publicación LinkedIn
+                </a>
+            </div>
+        </div>
+
+        <div id="page-introduccion" class="content-section">
+            <div class="lead-box">
+                <p>
+                    Antes de entrar en la cronología detallada, esta introducción sitúa el marco de la experiencia:
+                    un recuerdo de infancia extremadamente intenso, conservado con muchos detalles,
+                    con escenas visuales muy marcadas y con consecuencias físicas que reforzaron la impresión
+                    de que no se trataba de un simple sueño.
+                </p>
+            </div>
+
+            <div class="recit-step">
+                <img src="images/maison-enfance.jpg" alt="Casa familiar en Asnières" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Escena 1 : La inocencia</h3>
+                    <p>
+                        Aquí es donde todo comenzó, delante de la casa familiar en el
+                        <strong>7 Avenue Caroline, en Asnières</strong>, en <strong>1974</strong>.
+                        Yo era un niño de <strong>6 años</strong>, jugando tranquilamente en el suelo,
+                        en una atmósfera apacible, sin imaginar que un acontecimiento iba a cambiar
+                        de forma duradera mi percepción de la realidad.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>El punto de partida del testimonio</h3>
+                <p>
+                    El objetivo aquí no es imponer una conclusión, sino presentar con la mayor precisión posible
+                    el desarrollo del recuerdo, tal como quedó grabado en mi memoria,
+                    con sus imágenes, sus sensaciones, sus rupturas y sus consecuencias.
+                </p>
+            </div>
+        </div>
+
+        <div id="page-cronologia" class="content-section">
+            <div class="recit-step reverse">
+                <img src="images/nuit-attente-corrigee.png" alt="La noche y la espera" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Escena 2 : La arquitectura del sueño</h3>
+                    <p>
+                        Hacia las <strong>22h</strong>, yo estaba completamente despierto en mi cama formada por
+                        <strong>dos sillones unidos</strong>. Estábamos colocados a lo largo con respecto a la ventana.
+                        Mis padres dormían justo al lado; yo podía ver el rostro de mi madre justo enfrente de mí,
+                        a pocos centímetros, lo que hace la escena aún más precisa en mi recuerdo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-step">
+                <img src="images/flash-intrusion-corrigee.png" alt="Intrusión luminosa" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Escena 3 : La intrusión luminosa absoluta</h3>
+                    <p>
+                        De repente, una luz cegadora transformó la ventana en una especie de
+                        <strong>muro blanco opaco</strong>. Mi cuerpo quedó inmovilizado al instante, boca arriba.
+                        Intenté desesperadamente llamar a mi madre, pero ningún sonido salía de mí.
+                        Solo podía girar ligeramente la cabeza para verla dormir, completamente ajena al fenómeno.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-step reverse">
+                <img src="images/visiteurs-chambre.png" alt="Los visitantes en la habitación" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Escena 4 : Los visitantes</h3>
+                    <p>
+                        Tres seres de tamaño infantil, con cabezas voluminosas, entraron flotando por la zona
+                        de la ventana y de la luminosidad. Dos de ellos se situaron cerca de mis brazos,
+                        mientras el tercero flotaba sobre mi torso.
+                    </p>
+                    <p>
+                        No sentía exactamente un miedo clásico, sino una angustia profunda ligada
+                        a la impotencia, al silencio forzado y a la imposibilidad de alertar a mis padres,
+                        que seguían durmiendo a mi lado.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-step">
+                <img src="images/tunnel-lumineux.png" alt="Túnel luminoso" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Escena 5 : El túnel luminoso</h3>
+                    <p>
+                        Después de haber visto a los tres seres entrar por la ventana en aquella luminosidad cegadora,
+                        apenas dos o tres minutos más tarde, mi visión fue como absorbida brutalmente
+                        dentro de una especie de <strong>túnel luminoso</strong>.
+                    </p>
+                    <p>
+                        Todo iba a una velocidad extrema, como si yo fuera arrastrado dentro de una corriente imposible
+                        de detener. Los colores desfilaban con una intensidad impresionante, en una espiral luminosa
+                        que me daba la sensación de estar siendo proyectado hacia otro lugar.
+                    </p>
+                    <p>
+                        Esa secuencia marcó una ruptura total dentro de la experiencia. Tras la presencia de los seres,
+                        este paso por el túnel fue como una transición súbita, fulgurante, casi irreal,
+                        pero grabada con enorme fuerza en mi memoria.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-consecuencias" class="content-section">
+            <div class="recit-step reverse">
+                <img src="images/reveil-hemorragie.png" alt="El despertar" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Escena 6 : El despertar</h3>
+                    <p>
+                        Cuando desperté de aquella experiencia, tuve la impresión de que solo habían pasado unos segundos.
+                        Sin embargo, en realidad, habían transcurrido casi <strong>seis o siete horas</strong>.
+                    </p>
+                    <p>
+                        Abrí los ojos ya por la mañana, como si el tiempo se hubiera comprimido por completo.
+                        Todo lo vivido justo antes seguía muy presente, pero el salto temporal era brutal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>Escena 7 : La almohada llena de sangre</h3>
+                <p>
+                    Me desperté seguramente a causa de una <strong>hemorragia nasal</strong> después de la experiencia.
+                    Cuando mi madre encendió la luz, vimos que la realidad había dejado una huella física muy clara:
+                    <strong>la almohada estaba llena de sangre</strong>.
+                </p>
+                <p>
+                    En un primer momento, mi madre me decía que no había sido más que una pesadilla,
+                    un mal sueño de niño. Pero al ver la sangre sobre la almohada,
+                    la escena adquiría un peso muy diferente.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>Escena 8 : La interpretación de mi madre</h3>
+                <p>
+                    Mi madre intentó tranquilizarme diciéndome que había sido solamente una pesadilla.
+                    Sin embargo, para mí, el hecho de haber despertado tantas horas después,
+                    con la sensación de que solo habían pasado segundos,
+                    y encontrar la almohada ensangrentada, hizo que aquella vivencia quedara grabada
+                    como algo mucho más profundo que un simple sueño.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>Consecuencias físicas y memoria duradera</h3>
+                <p>
+                    Lo más inquietante no fue únicamente la intensidad de las imágenes,
+                    la presencia de los seres o la sensación del túnel,
+                    sino la existencia de una consecuencia física visible al despertar.
+                </p>
+                <p>
+                    Con el paso de los años, esta experiencia ocupó un lugar central en mi memoria.
+                    Después de aquella noche de 1974, sufrí <strong>hemorragias nasales crónicas hasta los 18 años</strong>,
+                    lo que reforzó aún más el peso de aquel recuerdo.
+                </p>
+            </div>
+        </div>
+
+        <div id="page-galeria" class="content-section">
+            <h2>Galería visual</h2>
+            <p>
+                Esta galería reúne las imágenes principales ya integradas en el relato,
+                así como espacios preparados para añadir más visuales en el futuro.
+            </p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/maison-enfance.jpg" alt="Casa de infancia">
+                    <div class="gallery-caption">La casa familiar: punto de partida del recuerdo.</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/nuit-attente-corrigee.png" alt="Espera nocturna">
+                    <div class="gallery-caption">Reconstitución de la espera nocturna antes del fenómeno.</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/flash-intrusion-corrigee.png" alt="Flash luminoso">
+                    <div class="gallery-caption">La luz cegadora y la intrusión luminosa.</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/visiteurs-chambre.png" alt="Visitantes en la habitación">
+                    <div class="gallery-caption">Representación de los tres seres dentro de la habitación.</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/tunnel-lumineux.png" alt="Túnel luminoso">
+                    <div class="gallery-caption">El paso por el túnel luminoso a gran velocidad.</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/reveil-hemorragie.png" alt="Despertar con hemorragia">
+                    <div class="gallery-caption">La mañana del despertar, varias horas después del fenómeno.</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/logo-phenomena.jpeg" alt="Logo Phenomena">
+                    <div class="gallery-caption">Identidad visual del proyecto Phenomena.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-casos" class="content-section">
+            <h2>Casos y dossiers complementarios</h2>
+            <div class="recit-text-only">
+                <p>
+                    Esta sección está reservada para integrar progresivamente otros relatos,
+                    observaciones, comparaciones, notas personales, recortes o elementos de análisis
+                    que puedan ampliar el proyecto.
+                </p>
+            </div>
+        </div>
+
+        <div id="page-caso-1" class="content-section">
+            <div class="recit-text-only">
+                <h3>Caso 1</h3>
+                <p>Espacio reservado para un primer caso externo o una primera comparación con el relato principal.</p>
+            </div>
+        </div>
+
+        <div id="page-caso-2" class="content-section">
+            <div class="recit-text-only">
+                <h3>Caso 2</h3>
+                <p>Espacio reservado para un segundo caso, un análisis paralelo o un dossier futuro.</p>
+            </div>
+        </div>
+
+        <div id="page-caso-3" class="content-section">
+            <div class="recit-text-only">
+                <h3>Caso 3</h3>
+                <p>Espacio reservado para un tercer desarrollo: nuevo testimonio, foto, análisis o observación.</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>© 2026 Proyecto Phenomena - Michel Quinones</p>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="sons/ambiance-phenomena.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicStatus = document.getElementById('musicStatus');
+        let isPlaying = false;
+        music.volume = 0.3;
+
+        musicToggle.addEventListener('click', async () => {
+            if (isPlaying) {
+                music.pause();
+                musicToggle.textContent = '▶ Activar la música';
+                musicStatus.textContent = 'Música detenida';
+                isPlaying = false;
+            } else {
+                try {
+                    await music.play();
+                    musicToggle.textContent = '🔇 Detener la música';
+                    musicStatus.textContent = 'Música en reproducción';
+                    isPlaying = true;
+                } catch (e) {
+                    musicStatus.textContent = 'Haz clic otra vez para activarla';
+                }
+            }
+        });
+
+        function toggleMainMenu() {
+            document.getElementById('mainMenu').classList.toggle('open');
+        }
+
+        function openNav(navId, clickedBtn = null) {
+            document.querySelectorAll('.submenu-area').forEach(nav => nav.style.display = 'none');
+
+            const targetNav = document.getElementById(navId);
+            if (targetNav) {
+                targetNav.style.display = 'flex';
+            }
+
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            }
+
+            if (navId === 'nav-inicio') {
+                showPage('page-inicio');
+            }
+
+            if (window.innerWidth <= 850) {
+                document.getElementById('mainMenu').classList.remove('open');
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.content-section').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'es,fr,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
