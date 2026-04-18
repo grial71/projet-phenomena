@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Phenomena - Investigación y Memoria</title>
+    <title>Projet Phenomena - Investigation & Parole Libre</title>
 
     <style>
         @keyframes spaceMove {
@@ -351,6 +351,31 @@
             color: #cfe7ff;
         }
 
+        .resource-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 26px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .resource-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .resource-button:hover,
+        .cta-button:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+        }
+
         .cta-container {
             text-align: center;
             padding: 38px;
@@ -373,9 +398,19 @@
             transition: 0.3s;
         }
 
-        .cta-button:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.05);
+        .cta-subtext {
+            max-width: 760px;
+            margin: 25px auto 0;
+            text-align: left;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            border-radius: 14px;
+            padding: 22px;
+            color: #dbe7f5;
+        }
+
+        .cta-subtext strong {
+            color: #25D366;
         }
 
         .footer-note {
@@ -452,6 +487,10 @@
             .gallery-item img {
                 height: 200px;
             }
+
+            .cta-subtext {
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -459,350 +498,344 @@
 
     <div class="top-bar">
         <div class="translate-box">
-            <strong>🌍 Traducción Google</strong>
+            <strong>🌍 Traduction Google</strong>
             <div id="google_translate_element"></div>
         </div>
 
         <div class="music-box">
-            <strong>🎵 Ambiente sonoro</strong>
-            <button id="musicToggle" class="music-button">▶ Activar la música</button>
-            <span id="musicStatus" class="music-status">Listo para la inmersión</span>
+            <strong>🎵 Ambiance Sonore</strong>
+            <button id="musicToggle" class="music-button">▶ Activer la musique</button>
+            <span id="musicStatus" class="music-status">Prêt pour l'immersion</span>
         </div>
     </div>
 
     <div class="navigation-container">
-        <button class="menu-toggle" onclick="toggleMainMenu()">☰ Abrir el menú</button>
+        <button class="menu-toggle" onclick="toggleMainMenu()">☰ Ouvrir le menu</button>
 
         <div class="main-menu" id="mainMenu">
-            <button class="menu-btn active" onclick="openNav('nav-inicio', this)">🏠 Inicio</button>
-            <button class="menu-btn" onclick="openNav('nav-relato', this)">📜 Relato principal</button>
-            <button class="menu-btn" onclick="openNav('nav-galeria', this)">🖼 Galería</button>
-            <button class="menu-btn" onclick="openNav('nav-casos', this)">🗂 Casos</button>
+            <button class="menu-btn active" onclick="openNav('nav-accueil', this)">🏠 Accueil</button>
+            <button class="menu-btn" onclick="openNav('nav-recits', this)">📜 Récit principal</button>
+            <button class="menu-btn" onclick="openNav('nav-galerie', this)">🖼 Galerie</button>
+            <button class="menu-btn" onclick="openNav('nav-cas', this)">🗂 Cas</button>
         </div>
 
-        <div id="nav-relato" class="submenu-area">
-            <button class="submenu-btn" onclick="showPage('page-introduccion')">Introducción</button>
-            <button class="submenu-btn" onclick="showPage('page-cronologia')">Cronología 1974</button>
-            <button class="submenu-btn" onclick="showPage('page-consecuencias')">Final y consecuencias</button>
+        <div id="nav-recits" class="submenu-area">
+            <button class="submenu-btn" onclick="showPage('page-introduction')">Introduction</button>
+            <button class="submenu-btn" onclick="showPage('page-chronologie')">Chronologie 1974</button>
+            <button class="submenu-btn" onclick="showPage('page-consequences')">Final et conséquences</button>
         </div>
 
-        <div id="nav-galeria" class="submenu-area">
-            <button class="submenu-btn" onclick="showPage('page-galeria')">Fotos y visuales</button>
+        <div id="nav-galerie" class="submenu-area">
+            <button class="submenu-btn" onclick="showPage('page-galerie')">Photos et visuels</button>
         </div>
 
-        <div id="nav-casos" class="submenu-area">
-            <button class="submenu-btn" onclick="showPage('page-casos')">Vista general</button>
-            <button class="submenu-btn" onclick="showPage('page-caso-1')">Caso 1</button>
-            <button class="submenu-btn" onclick="showPage('page-caso-2')">Caso 2</button>
-            <button class="submenu-btn" onclick="showPage('page-caso-3')">Caso 3</button>
+        <div id="nav-cas" class="submenu-area">
+            <button class="submenu-btn" onclick="showPage('page-cas')">Vue générale</button>
+            <button class="submenu-btn" onclick="showPage('page-cas-1')">Cas 1</button>
+            <button class="submenu-btn" onclick="showPage('page-cas-2')">Cas 2</button>
+            <button class="submenu-btn" onclick="showPage('page-cas-3')">Cas 3</button>
         </div>
     </div>
 
     <div class="container">
         <img src="images/logo-phenomena.jpeg" alt="Logo Phenomena" class="header-image">
 
-        <h1>Proyecto Phenomena</h1>
-        <p class="subtitle">Investigación • Memoria • Palabra libre</p>
+        <h1>Projet Phenomena</h1>
+        <p class="subtitle">Investigation • Mémoire • Parole Libre</p>
 
-        <div id="page-inicio" class="content-section active">
+        <!-- ACCUEIL -->
+        <div id="page-accueil" class="content-section active">
             <div class="lead-box">
                 <p>
-                    Bienvenido. Mi nombre es <strong>Michel</strong>. Dedico este espacio a la comprensión
-                    de los fenómenos que escapan a las explicaciones convencionales, a la memoria de los hechos vividos,
-                    a la transmisión de testimonios y a la apertura de un lugar donde cada persona pueda expresarse
-                    con respeto, prudencia y sinceridad.
+                    Bienvenue. Mon nom est <strong>Michel</strong>. Je dédie cet espace à la compréhension
+                    des phénomènes qui échappent aux explications conventionnelles, à la mémoire des faits vécus,
+                    à la transmission des témoignages et à l’ouverture d’un espace où chacun peut s’exprimer
+                    avec respect, prudence et sincérité.
                 </p>
             </div>
 
             <div class="experience-box">
-                “En 1974, a la edad de 6 años, viví una experiencia que redefinió mi visión de la realidad.
-                Este sitio es un intento de reconstrucción, análisis y transmisión de esa experiencia
-                y de otros elementos que podrán añadirse progresivamente.”
+                “En 1974, à l'âge de 6 ans, j'ai vécu une expérience qui a redéfini ma vision de la réalité.
+                Ce site est une tentative de reconstitution, d'analyse et de partage autour de cette expérience.”
             </div>
 
             <div class="info-grid">
                 <div class="info-card">
-                    <h3>Objetivo del proyecto</h3>
+                    <h3>Objectif du projet</h3>
                     <p>
-                        Estructurar un espacio visual, narrativo y evolutivo para presentar un testimonio central,
-                        relacionar elementos, integrar otros casos y permitir una expresión más libre
-                        en torno a fenómenos inexplicables.
+                        Structurer un espace visuel et narratif pour présenter un témoignage central,
+                        recouper des éléments, intégrer d’autres cas et permettre une parole plus libre
+                        autour des phénomènes inexpliqués.
                     </p>
                 </div>
 
                 <div class="info-card">
-                    <h3>Enfoque</h3>
+                    <h3>Approche</h3>
                     <p>
-                        El proyecto busca conservar la memoria de una vivencia personal,
-                        abriendo al mismo tiempo la puerta a otros relatos, comparaciones, observaciones
-                        y documentación progresiva, siempre con prudencia y sentido del análisis.
+                        Le projet cherche à conserver la mémoire d’un vécu personnel,
+                        tout en ouvrant la voie à d’autres récits, observations et analyses,
+                        avec prudence et sens de l’écoute.
                     </p>
                 </div>
             </div>
 
             <div class="recit-text-only">
-                <h3>Presentación general</h3>
+                <h3>Présentation générale</h3>
                 <p>
-                    Esta página ha sido pensada para ser amplia y evolutiva. Reúne el relato principal,
-                    las imágenes clave, el desenlace de la experiencia y un menú
-                    que permitirá añadir más adelante otros casos, dossiers, testimonios, visuales
-                    o elementos de contexto.
+                    Cette page a été pensée pour être plus ample et évolutive. Elle rassemble le récit principal,
+                    les images clés, les conséquences évoquées, des ressources utiles et un menu permettant
+                    d’ajouter progressivement d’autres cas ou témoignages.
                 </p>
             </div>
 
             <div class="cta-container">
-                <p>Acceso directo:</p>
-
-                <a href="https://chat.whatsapp.com/K5LLDBxJdlc6T2d2e2HUVG"
-                   class="cta-button" target="_blank">
-                   💬 Grupo WhatsApp
+                <p><strong>Rejoignez la communauté Phenomena :</strong></p>
+                <a href="https://chat.whatsapp.com/K5LLDBxJdlc6T2d2e2HUVG" class="cta-button" target="_blank">
+                    Accéder au Groupe WhatsApp
                 </a>
 
-                <br><br>
-
-                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7447292991410659328/"
-                   class="cta-button" style="background:#0a66c2;" target="_blank">
-                   🔗 Publicación LinkedIn
-                </a>
+                <div class="cta-subtext">
+                    <p>
+                        Les personnes qui souhaitent témoigner de leur expérience peuvent le faire en
+                        <strong>écrit, audio ou vidéo</strong>.
+                    </p>
+                    <p>
+                        Je peux également être présent pour réaliser une <strong>interview</strong> sur Rouen.
+                        Et si vous préférez rester <strong>confidentiel</strong>, il est aussi possible
+                        d’échanger plus discrètement via WhatsApp en Privé.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div id="page-introduccion" class="content-section">
+        <!-- INTRODUCTION -->
+        <div id="page-introduction" class="content-section">
             <div class="lead-box">
                 <p>
-                    Antes de entrar en la cronología detallada, esta introducción sitúa el marco de la experiencia:
-                    un recuerdo de infancia extremadamente intenso, conservado con muchos detalles,
-                    con escenas visuales muy marcadas y con consecuencias físicas que reforzaron la impresión
-                    de que no se trataba de un simple sueño.
+                    Avant d’entrer dans la chronologie détaillée, cette introduction situe le cadre :
+                    un souvenir d’enfance extrêmement marquant, resté vivant dans ma mémoire,
+                    avec des détails précis, des scènes visuelles fortes et des conséquences physiques
+                    qui ont renforcé le sentiment qu’il ne s’agissait pas d’un simple rêve ordinaire.
                 </p>
             </div>
 
             <div class="recit-step">
-                <img src="images/maison-enfance.jpg" alt="Casa familiar en Asnières" class="recit-image">
+                <img src="images/maison-enfance.jpg" alt="Maison familiale à Asnières" class="recit-image">
                 <div class="recit-text-box">
-                    <h3>Escena 1 : La inocencia</h3>
+                    <h3>Scène 1 : L'Innocence</h3>
                     <p>
-                        Aquí es donde todo comenzó, delante de la casa familiar en el
-                        <strong>7 Avenue Caroline, en Asnières</strong>, en <strong>1974</strong>.
-                        Yo era un niño de <strong>6 años</strong>, jugando tranquilamente en el suelo,
-                        en una atmósfera apacible, sin imaginar que un acontecimiento iba a cambiar
-                        de forma duradera mi percepción de la realidad.
+                        C'est ici que tout a commencé, devant la maison familiale au
+                        <strong>7 Avenue Caroline, à Asnières</strong>, en <strong>1974</strong>.
+                        J'étais un enfant de <strong>6 ans</strong>, jouant innocemment par terre,
+                        dans une atmosphère paisible, sans imaginer qu’un événement allait bouleverser
+                        durablement ma perception du réel.
                     </p>
                 </div>
             </div>
 
             <div class="recit-text-only">
-                <h3>El punto de partida del testimonio</h3>
+                <h3>Le point de départ du témoignage</h3>
                 <p>
-                    El objetivo aquí no es imponer una conclusión, sino presentar con la mayor precisión posible
-                    el desarrollo del recuerdo, tal como quedó grabado en mi memoria,
-                    con sus imágenes, sus sensaciones, sus rupturas y sus consecuencias.
+                    Le but ici n’est pas d’imposer une conclusion, mais de présenter avec précision
+                    le déroulement du souvenir, tel qu’il a été retenu, avec ses images,
+                    ses sensations, ses ruptures et ses conséquences.
                 </p>
             </div>
         </div>
 
-        <div id="page-cronologia" class="content-section">
+        <!-- CHRONOLOGIE -->
+        <div id="page-chronologie" class="content-section">
             <div class="recit-step reverse">
-                <img src="images/nuit-attente-corrigee.png" alt="La noche y la espera" class="recit-image">
+                <img src="images/nuit-attente-corrigee.png" alt="Nuit et attente" class="recit-image">
                 <div class="recit-text-box">
-                    <h3>Escena 2 : La arquitectura del sueño</h3>
+                    <h3>Scène 2 : L'Architecture du Sommeil</h3>
                     <p>
-                        Hacia las <strong>22h</strong>, yo estaba completamente despierto en mi cama formada por
-                        <strong>dos sillones unidos</strong>. Estábamos colocados a lo largo con respecto a la ventana.
-                        Mis padres dormían justo al lado; yo podía ver el rostro de mi madre justo enfrente de mí,
-                        a pocos centímetros, lo que hace la escena aún más precisa en mi recuerdo.
-                    </p>
-                </div>
-            </div>
-
-            <div class="recit-step">
-                <img src="images/flash-intrusion-corrigee.png" alt="Intrusión luminosa" class="recit-image">
-                <div class="recit-text-box">
-                    <h3>Escena 3 : La intrusión luminosa absoluta</h3>
-                    <p>
-                        De repente, una luz cegadora transformó la ventana en una especie de
-                        <strong>muro blanco opaco</strong>. Mi cuerpo quedó inmovilizado al instante, boca arriba.
-                        Intenté desesperadamente llamar a mi madre, pero ningún sonido salía de mí.
-                        Solo podía girar ligeramente la cabeza para verla dormir, completamente ajena al fenómeno.
-                    </p>
-                </div>
-            </div>
-
-            <div class="recit-step reverse">
-                <img src="images/visiteurs-chambre.png" alt="Los visitantes en la habitación" class="recit-image">
-                <div class="recit-text-box">
-                    <h3>Escena 4 : Los visitantes</h3>
-                    <p>
-                        Tres seres de tamaño infantil, con cabezas voluminosas, entraron flotando por la zona
-                        de la ventana y de la luminosidad. Dos de ellos se situaron cerca de mis brazos,
-                        mientras el tercero flotaba sobre mi torso.
-                    </p>
-                    <p>
-                        No sentía exactamente un miedo clásico, sino una angustia profunda ligada
-                        a la impotencia, al silencio forzado y a la imposibilidad de alertar a mis padres,
-                        que seguían durmiendo a mi lado.
+                        Vers <strong>22h</strong>, j'étais totalement éveillé dans mon lit formé par
+                        <strong>deux fauteuils unis</strong>. Nous étions installés en longueur par rapport à la fenêtre.
+                        Mes parents dormaient juste à côté ; je pouvais voir le visage de ma maman juste en face de moi,
+                        à quelques centimètres.
                     </p>
                 </div>
             </div>
 
             <div class="recit-step">
-                <img src="images/tunnel-lumineux.png" alt="Túnel luminoso" class="recit-image">
+                <img src="images/flash-intrusion-corrigee.png" alt="Intrusion lumineuse" class="recit-image">
                 <div class="recit-text-box">
-                    <h3>Escena 5 : El túnel luminoso</h3>
+                    <h3>Scène 3 : L'Intrusion Lumineuse Absolue</h3>
                     <p>
-                        Después de haber visto a los tres seres entrar por la ventana en aquella luminosidad cegadora,
-                        apenas dos o tres minutos más tarde, mi visión fue como absorbida brutalmente
-                        dentro de una especie de <strong>túnel luminoso</strong>.
-                    </p>
-                    <p>
-                        Todo iba a una velocidad extrema, como si yo fuera arrastrado dentro de una corriente imposible
-                        de detener. Los colores desfilaban con una intensidad impresionante, en una espiral luminosa
-                        que me daba la sensación de estar siendo proyectado hacia otro lugar.
-                    </p>
-                    <p>
-                        Esa secuencia marcó una ruptura total dentro de la experiencia. Tras la presencia de los seres,
-                        este paso por el túnel fue como una transición súbita, fulgurante, casi irreal,
-                        pero grabada con enorme fuerza en mi memoria.
+                        Soudain, une lumière aveuglante transforme la fenêtre en un
+                        <strong>mur blanc opaque</strong>. Mon corps se fige instantanément, le ventre vers le haut.
+                        J'essaie désespérément d'appeler ma maman, mais aucun son ne sort.
+                        Seule ma tête peut pivoter légèrement pour la voir dormir, inconsciente du phénomène.
                     </p>
                 </div>
             </div>
-        </div>
 
-        <div id="page-consecuencias" class="content-section">
             <div class="recit-step reverse">
-                <img src="images/reveil-hemorragie.png" alt="El despertar" class="recit-image">
+                <img src="images/visiteurs-chambre.png" alt="Les visiteurs dans la chambre" class="recit-image">
                 <div class="recit-text-box">
-                    <h3>Escena 6 : El despertar</h3>
+                    <h3>Scène 4 : Les Visiteurs</h3>
                     <p>
-                        Cuando desperté de aquella experiencia, tuve la impresión de que solo habían pasado unos segundos.
-                        Sin embargo, en realidad, habían transcurrido casi <strong>seis o siete horas</strong>.
+                        Trois silhouettes d'une taille d'enfant, avec des têtes volumineuses,
+                        sont entrées en flottant dans la pièce. Deux m'ont tenu les bras,
+                        tandis que la troisième flottait au-dessus de mon torse.
                     </p>
                     <p>
-                        Abrí los ojos ya por la mañana, como si el tiempo se hubiera comprimido por completo.
-                        Todo lo vivido justo antes seguía muy presente, pero el salto temporal era brutal.
+                        Je ne ressentais pas une peur classique, mais une angoisse profonde liée à mon impuissance,
+                        au silence imposé et à l’impossibilité d’alerter mes parents.
                     </p>
                 </div>
             </div>
 
+            <div class="recit-step">
+                <img src="images/tunnel-lumineux.png" alt="Tunnel lumineux" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Scène 5 : Le Tunnel lumineux</h3>
+                    <p>
+                        Après avoir vu les trois êtres entrer par la fenêtre dans une luminosité aveuglante,
+                        à peine deux à trois minutes plus tard, ma vision a été comme absorbée brutalement
+                        dans une sorte de <strong>tunnel lumineux</strong>.
+                    </p>
+                    <p>
+                        Tout allait à une vitesse extrême, comme si j’étais emporté dans un courant impossible
+                        à arrêter. Les couleurs défilaient avec une intensité saisissante, dans une spirale lumineuse
+                        qui me donnait la sensation d’être projeté ailleurs.
+                    </p>
+                    <p>
+                        Cette séquence a marqué une rupture dans l’expérience.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONSEQUENCES -->
+        <div id="page-consequences" class="content-section">
             <div class="recit-text-only">
-                <h3>Escena 7 : La almohada llena de sangre</h3>
+                <h3>Scène 6 : Le Réveil et les Traces Physiques</h3>
                 <p>
-                    Me desperté seguramente a causa de una <strong>hemorragia nasal</strong> después de la experiencia.
-                    Cuando mi madre encendió la luz, vimos que la realidad había dejado una huella física muy clara:
-                    <strong>la almohada estaba llena de sangre</strong>.
+                    Le réveil fut brusque. Il faisait déjà jour. J'ai crié pour appeler ma maman.
+                    Elle s'est réveillée en pensant à un cauchemar, mais en allumant la lumière,
+                    le choc fut total : <strong>mes taies d'oreiller étaient couvertes de sang</strong>.
                 </p>
                 <p>
-                    En un primer momento, mi madre me decía que no había sido más que una pesadilla,
-                    un mal sueño de niño. Pero al ver la sangre sobre la almohada,
-                    la escena adquiría un peso muy diferente.
+                    Ce sang provenait de mon nez. Suite à cette nuit de 1974,
+                    j'ai souffert d'<strong>hémorragies nasales chroniques jusqu'à l'âge de 18 ans</strong>,
+                    ce qui a marqué durablement mon esprit.
                 </p>
             </div>
 
             <div class="recit-text-only">
-                <h3>Escena 8 : La interpretación de mi madre</h3>
+                <h3>Le temps écoulé</h3>
                 <p>
-                    Mi madre intentó tranquilizarme diciéndome que había sido solamente una pesadilla.
-                    Sin embargo, para mí, el hecho de haber despertado tantas horas después,
-                    con la sensación de que solo habían pasado segundos,
-                    y encontrar la almohada ensangrentada, hizo que aquella vivencia quedara grabada
-                    como algo mucho más profundo que un simple sueño.
+                    Lorsque j’ai repris conscience, j’ai eu l’impression que seulement quelques secondes
+                    s’étaient écoulées, alors qu’en réalité plusieurs heures avaient passé.
+                    Ce décalage temporel a renforcé la singularité de ce souvenir.
                 </p>
             </div>
 
             <div class="recit-text-only">
-                <h3>Consecuencias físicas y memoria duradera</h3>
+                <h3>La réaction de ma mère</h3>
                 <p>
-                    Lo más inquietante no fue únicamente la intensidad de las imágenes,
-                    la presencia de los seres o la sensación del túnel,
-                    sino la existencia de una consecuencia física visible al despertar.
-                </p>
-                <p>
-                    Con el paso de los años, esta experiencia ocupó un lugar central en mi memoria.
-                    Después de aquella noche de 1974, sufrí <strong>hemorragias nasales crónicas hasta los 18 años</strong>,
-                    lo que reforzó aún más el peso de aquel recuerdo.
+                    Ma mère pensait d’abord qu’il ne s’agissait que d’une simple pesadilla,
+                    mais la présence du sang sur l’oreiller donnait à la scène une dimension
+                    beaucoup plus troublante.
                 </p>
             </div>
         </div>
 
-        <div id="page-galeria" class="content-section">
-            <h2>Galería visual</h2>
+        <!-- GALERIE -->
+        <div id="page-galerie" class="content-section">
+            <h2>Galerie visuelle</h2>
             <p>
-                Esta galería reúne las imágenes principales ya integradas en el relato,
-                así como espacios preparados para añadir más visuales en el futuro.
+                Cette galerie regroupe les images principales déjà utilisées dans le récit.
             </p>
 
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/maison-enfance.jpg" alt="Casa de infancia">
-                    <div class="gallery-caption">La casa familiar: punto de partida del recuerdo.</div>
+                    <img src="images/maison-enfance.jpg" alt="Maison enfance">
+                    <div class="gallery-caption">Maison familiale – point de départ du souvenir.</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="images/nuit-attente-corrigee.png" alt="Espera nocturna">
-                    <div class="gallery-caption">Reconstitución de la espera nocturna antes del fenómeno.</div>
+                    <img src="images/nuit-attente-corrigee.png" alt="Nuit attente">
+                    <div class="gallery-caption">Reconstitution de l’attente nocturne avant l’événement.</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="images/flash-intrusion-corrigee.png" alt="Flash luminoso">
-                    <div class="gallery-caption">La luz cegadora y la intrusión luminosa.</div>
+                    <img src="images/flash-intrusion-corrigee.png" alt="Flash intrusion">
+                    <div class="gallery-caption">La lumière aveuglante et l’intrusion lumineuse.</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="images/visiteurs-chambre.png" alt="Visitantes en la habitación">
-                    <div class="gallery-caption">Representación de los tres seres dentro de la habitación.</div>
+                    <img src="images/visiteurs-chambre.png" alt="Visiteurs chambre">
+                    <div class="gallery-caption">Les trois êtres au-dessus du corps dans la chambre.</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="images/tunnel-lumineux.png" alt="Túnel luminoso">
-                    <div class="gallery-caption">El paso por el túnel luminoso a gran velocidad.</div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="images/reveil-hemorragie.png" alt="Despertar con hemorragia">
-                    <div class="gallery-caption">La mañana del despertar, varias horas después del fenómeno.</div>
+                    <img src="images/tunnel-lumineux.png" alt="Tunnel lumineux">
+                    <div class="gallery-caption">Le passage dans le tunnel lumineux à très grande vitesse.</div>
                 </div>
 
                 <div class="gallery-item">
                     <img src="images/logo-phenomena.jpeg" alt="Logo Phenomena">
-                    <div class="gallery-caption">Identidad visual del proyecto Phenomena.</div>
+                    <div class="gallery-caption">Identité visuelle du projet Phenomena.</div>
                 </div>
             </div>
         </div>
 
-        <div id="page-casos" class="content-section">
-            <h2>Casos y dossiers complementarios</h2>
+        <!-- CAS -->
+        <div id="page-cas" class="content-section">
+            <h2>Cas et dossiers complémentaires</h2>
             <div class="recit-text-only">
                 <p>
-                    Esta sección está reservada para integrar progresivamente otros relatos,
-                    observaciones, comparaciones, notas personales, recortes o elementos de análisis
-                    que puedan ampliar el proyecto.
+                    Cette section est prévue pour intégrer progressivement d'autres éléments :
+                    cas comparables, observations, témoignages externes, notes personnelles,
+                    rapprochements ou analyses.
                 </p>
             </div>
         </div>
 
-        <div id="page-caso-1" class="content-section">
+        <div id="page-cas-1" class="content-section">
             <div class="recit-text-only">
-                <h3>Caso 1</h3>
-                <p>Espacio reservado para un primer caso externo o una primera comparación con el relato principal.</p>
+                <h3>Cas 1</h3>
+                <p>Emplacement réservé pour un premier fait ou un témoignage extérieur.</p>
             </div>
         </div>
 
-        <div id="page-caso-2" class="content-section">
+        <div id="page-cas-2" class="content-section">
             <div class="recit-text-only">
-                <h3>Caso 2</h3>
-                <p>Espacio reservado para un segundo caso, un análisis paralelo o un dossier futuro.</p>
+                <h3>Cas 2</h3>
+                <p>Emplacement réservé pour un deuxième cas ou une analyse parallèle.</p>
             </div>
         </div>
 
-        <div id="page-caso-3" class="content-section">
+        <div id="page-cas-3" class="content-section">
             <div class="recit-text-only">
-                <h3>Caso 3</h3>
-                <p>Espacio reservado para un tercer desarrollo: nuevo testimonio, foto, análisis o observación.</p>
+                <h3>Cas 3</h3>
+                <p>Emplacement réservé pour un troisième développement futur.</p>
             </div>
         </div>
+
+        <section class="resources-section" style="margin-top: 20px;">
+            <div class="resource-card">
+                <h3>Playlist YouTube OVNI</h3>
+                <p>Consultez l'ensemble des contenus liés au sujet Ovni, témoignages et analyses.</p>
+                <a class="resource-button" href="https://www.youtube.com/watch?v=VjPm4nRoJqU&list=PL0X9_wKvS3FdVvSBHp7-tj9ieRsBlQp1e" target="_blank">
+                    ▶ Ouvrir la playlist
+                </a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Publication LinkedIn – Propulsion</h3>
+                <p>Hypothèses sur l'antigravité et les technologies de rupture.</p>
+                <a class="resource-button" style="background: #0a66c2;" href="https://www.linkedin.com/feed/update/urn:li:activity:7447292991410659328/" target="_blank">
+                    in Voir la publication
+                </a>
+            </div>
+        </section>
 
         <div class="footer-note">
-            <p>© 2026 Proyecto Phenomena - Michel Quinones</p>
+            <p>© 2026 Projet Phenomena - Michel Quinones</p>
         </div>
     </div>
 
@@ -820,17 +853,17 @@
         musicToggle.addEventListener('click', async () => {
             if (isPlaying) {
                 music.pause();
-                musicToggle.textContent = '▶ Activar la música';
-                musicStatus.textContent = 'Música detenida';
+                musicToggle.textContent = '▶ Activer la musique';
+                musicStatus.textContent = 'Musique arrêtée';
                 isPlaying = false;
             } else {
                 try {
                     await music.play();
-                    musicToggle.textContent = '🔇 Detener la música';
-                    musicStatus.textContent = 'Música en reproducción';
+                    musicToggle.textContent = '🔇 Couper la musique';
+                    musicStatus.textContent = 'Musique en lecture';
                     isPlaying = true;
                 } catch (e) {
-                    musicStatus.textContent = 'Haz clic otra vez para activarla';
+                    musicStatus.textContent = 'Cliquez à nouveau pour activer';
                 }
             }
         });
@@ -852,8 +885,8 @@
                 clickedBtn.classList.add('active');
             }
 
-            if (navId === 'nav-inicio') {
-                showPage('page-inicio');
+            if (navId === 'nav-accueil') {
+                showPage('page-accueil');
             }
 
             if (window.innerWidth <= 850) {
@@ -874,8 +907,8 @@
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'es',
-                includedLanguages: 'es,fr,en',
+                pageLanguage: 'fr',
+                includedLanguages: 'fr,en,es',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
