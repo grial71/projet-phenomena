@@ -1283,17 +1283,28 @@
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
-fetch('https://phenomena.goatcounter.com/counter/phenomena.json')
-.then(res => res.json())
-.then(data => {
-    document.getElementById('visits').innerText = data.count;
-})
-.catch(() => {
-    document.getElementById('visits').innerText = '...';
-});
-</script>
 
     <script data-goatcounter="https://phenomena.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+
+ <script>
+let alreadyCounted = sessionStorage.getItem('visited');
+let visits = localStorage.getItem('phenomena_visits');
+
+if (!visits) {
+    visits = 0;
+}
+
+visits = parseInt(visits);
+
+if (!alreadyCounted) {
+    visits++;
+    localStorage.setItem('phenomena_visits', visits);
+    sessionStorage.setItem('visited', 'true');
+}
+
+document.getElementById('visits').innerText = visits;
+</script>
+
 </body>
 </html>
