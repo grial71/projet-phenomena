@@ -1286,9 +1286,6 @@
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script data-goatcounter="https://phenomena.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
 import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-database.js";
@@ -1307,11 +1304,17 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const visitRef = ref(db, "visits");
 
+const alreadyCounted = sessionStorage.getItem("phenomena_visited");
+
 get(visitRef).then((snapshot) => {
     let count = snapshot.val() || 0;
-    count++;
 
-    set(visitRef, count);
+    if (!alreadyCounted) {
+        count++;
+        set(visitRef, count);
+        sessionStorage.setItem("phenomena_visited", "true");
+    }
+
     document.getElementById("visits").innerText = count;
 }).catch((error) => {
     console.error("Erreur Firebase :", error);
