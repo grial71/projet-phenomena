@@ -371,7 +371,9 @@
         }
 
         .resource-button:hover,
-        .cta-button:hover {
+        .cta-button:hover,
+        .modal-action-btn:hover,
+        .modal-close:hover {
             transform: translateY(-1px);
             filter: brightness(1.05);
         }
@@ -420,6 +422,88 @@
             font-size: 0.92rem;
             border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 22px;
+        }
+
+        /* Fenêtre modale Faits divers */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 8, 18, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            padding: 30px 16px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-window {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(5,18,34,0.96), rgba(8,28,48,0.96));
+            border: 1px solid rgba(0,210,255,0.35);
+            border-radius: 24px;
+            box-shadow: 0 0 45px rgba(0,0,0,0.7);
+            padding: 28px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .modal-title {
+            color: #00d2ff;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .modal-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .modal-action-btn,
+        .modal-close {
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 12px 20px;
+            transition: 0.25s;
+        }
+
+        .modal-action-btn {
+            background: linear-gradient(135deg, #00d2ff, #007cf0);
+            color: #07121d;
+        }
+
+        .modal-close {
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.14);
+        }
+
+        .modal-body {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 22px;
+        }
+
+        .modal-source {
+            display: none;
         }
 
         @media (max-width: 980px) {
@@ -491,6 +575,14 @@
             .cta-subtext {
                 text-align: left;
             }
+
+            .modal-window {
+                padding: 20px;
+            }
+
+            .modal-title {
+                font-size: 1.45rem;
+            }
         }
     </style>
 </head>
@@ -513,7 +605,7 @@
         <button class="menu-toggle" onclick="toggleMainMenu()">☰ Ouvrir le menu</button>
 
         <div class="main-menu" id="mainMenu">
-            <button class="menu-btn active" onclick="openNav('nav-accueil', this)">🏠 Accueil</button>
+            <button id="homeMainBtn" class="menu-btn active" onclick="openNav('nav-accueil', this)">🏠 Accueil</button>
             <button class="menu-btn" onclick="openNav('nav-recits', this)">📜 Récit principal</button>
             <button class="menu-btn" onclick="openNav('nav-galerie', this)">🖼 Galerie</button>
             <button class="menu-btn" onclick="openNav('nav-cas', this)">🗂 Faits divers</button>
@@ -530,10 +622,10 @@
         </div>
 
         <div id="nav-cas" class="submenu-area">
-            <button class="submenu-btn" onclick="showPage('page-cas')">Vue générale</button>
-            <button class="submenu-btn" onclick="showPage('page-cas-1')">Sentinel</button>
-            <button class="submenu-btn" onclick="showPage('page-cas-2')">Cas 2</button>
-            <button class="submenu-btn" onclick="showPage('page-cas-3')">Cas 3</button>
+            <button class="submenu-btn" onclick="openFactModal('modal-cas-overview', 'Faits divers')">Vue générale</button>
+            <button class="submenu-btn" onclick="openFactModal('modal-cas-1', 'Projet Sentinel')">Sentinel</button>
+            <button class="submenu-btn" onclick="openFactModal('modal-cas-2', 'Visualisation créatrice')">Visualisation</button>
+            <button class="submenu-btn" onclick="openFactModal('modal-cas-3', 'Simulation & conscience')">Simulation</button>
         </div>
     </div>
 
@@ -778,92 +870,6 @@
             </div>
         </div>
 
-        <div id="page-cas" class="content-section">
-            <h2>Faits divers et dossiers complémentaires</h2>
-            <div class="recit-text-only">
-                <p>
-                    Cette section est prévue pour intégrer progressivement d'autres éléments :
-                    cas comparables, observations, témoignages externes, notes personnelles,
-                    rapprochements ou analyses.
-                </p>
-            </div>
-        </div>
-
-        <div id="page-cas-1" class="content-section">
-            <div class="recit-step">
-                <img src="images/sentinel-mystere.png" alt="Projet Sentinel" class="recit-image">
-                <div class="recit-text-box">
-                    <h3>Projet Sentinel</h3>
-                    <p>
-                        Une représentation visuelle des technologies avancées évoquées dans les programmes
-                        secrets et les recherches en rétro-ingénierie.
-                    </p>
-                </div>
-            </div>
-
-            <div class="recit-text-only">
-                <h3>Technologies Secrètes & Rétro-Ingénierie : Le Mystère Sentinel</h3>
-                <p>
-                    Au-delà des témoignages et des récits personnels, il existe un domaine beaucoup plus discret,
-                    presque inaccessible au grand public : celui des <strong>programmes à accès spécial</strong>,
-                    souvent appelés <strong>“Black Projects”</strong>.
-                </p>
-                <p>
-                    Dans cet univers opaque, certains noms circulent de manière récurrente. Parmi eux,
-                    le projet <strong>“Sentinel”</strong>. S’agit-il d’un simple réseau de surveillance satellitaire
-                    ou du nom de code d’une nouvelle génération d’appareils humains défiant les lois de la physique ?
-                </p>
-            </div>
-
-            <div class="recit-text-only">
-                <h3>L’Antigravité : Le Graal Technologique</h3>
-                <p>
-                    Depuis des décennies, des chercheurs et des lanceurs d’alerte suggèrent que l’humanité
-                    tente de reproduire les systèmes de propulsion observés sur les phénomènes non identifiés.
-                </p>
-                <p><strong>Propulsion sans inertie :</strong> des prototypes capables de virages à angle droit ou d’accélérations instantanées.</p>
-                <p><strong>Réduction de masse :</strong> l’utilisation possible de plasmas rotatifs pour “annuler” la gravité autour de l’appareil.</p>
-                <p><strong>Niveau humain :</strong> passer des théories complexes à des engins pilotables, souvent décrits comme des triangles noirs silencieux.</p>
-            </div>
-
-            <div class="recit-text-only">
-                <h3>Le lien avec mon expérience de 1974</h3>
-                <p>
-                    Ce qui me frappe dans ces recherches, c’est la corrélation avec ce que j’ai vécu.
-                    Le tunnel de couleurs et la vitesse extrême que j’ai ressentie ne sont pas sans rappeler
-                    les théories sur la distorsion de l’espace-temps.
-                </p>
-                <p>
-                    Si le projet Sentinel ou ses équivalents cherchent à maîtriser ces forces,
-                    ils ne font peut-être que tenter de copier une technologie
-                    qui nous a déjà visités il y a bien longtemps, au <strong>7 Avenue Caroline</strong>.
-                </p>
-            </div>
-
-            <div class="recit-text-only">
-                <h3>En quête de preuves</h3>
-                <p>
-                    Dans cette section “Faits Divers”, nous explorerons les fuites de documents,
-                    les brevets déposés par la Navy et les témoignages sur ces prototypes secrets
-                    qui surveillent nos cieux sous le nom de “Sentinelles”.
-                </p>
-            </div>
-        </div>
-
-        <div id="page-cas-2" class="content-section">
-            <div class="recit-text-only">
-                <h3>Cas 2</h3>
-                <p>Emplacement réservé pour un deuxième cas ou une analyse parallèle.</p>
-            </div>
-        </div>
-
-        <div id="page-cas-3" class="content-section">
-            <div class="recit-text-only">
-                <h3>Cas 3</h3>
-                <p>Emplacement réservé pour un troisième développement futur.</p>
-            </div>
-        </div>
-
         <section class="resources-section" style="margin-top: 20px;">
             <div class="resource-card">
                 <h3>Playlist YouTube OVNI</h3>
@@ -884,6 +890,259 @@
 
         <div class="footer-note">
             <p>© 2026 Projet Phenomena - Michel Quinones</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre encadrée pour Faits divers -->
+    <div id="factModal" class="modal-overlay" onclick="handleOverlayClose(event)">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title">Faits divers</h2>
+                <div class="modal-controls">
+                    <button class="modal-action-btn" onclick="returnToHome()">⬅ Retour à l’accueil</button>
+                    <button class="modal-close" onclick="closeFactModal()">✕ Fermer</button>
+                </div>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Sources cachées des fenêtres Faits divers -->
+    <div class="modal-source">
+        <div id="modal-cas-overview">
+            <div class="recit-text-only">
+                <h3>Faits divers et dossiers complémentaires</h3>
+                <p>
+                    Cette section a été conçue pour accueillir progressivement des analyses, rapprochements,
+                    documents, observations, témoignages extérieurs, pistes de réflexion et contenus reliés
+                    à la conscience, aux technologies avancées et aux grandes questions sur la réalité.
+                </p>
+                <p>
+                    Les thèmes déjà intégrés dans cette zone explorent aussi bien les programmes secrets,
+                    la rétro-ingénierie, la visualisation créatrice, que les hypothèses plus profondes
+                    sur la simulation du réel et la nature même de la conscience.
+                </p>
+            </div>
+        </div>
+
+        <div id="modal-cas-1">
+            <div class="recit-step">
+                <img src="images/sentinel-mystere.png" alt="Projet Sentinel" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>Projet Sentinel</h3>
+                    <p>
+                        Une représentation visuelle des technologies avancées évoquées dans les programmes
+                        secrets et les recherches en rétro-ingénierie.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>Technologies Secrètes & Rétro-Ingénierie : Le Mystère Sentinel</h3>
+                <p>
+                    Au-delà des témoignages et des récits personnels, il existe un domaine beaucoup plus discret,
+                    presque inaccessible au grand public : celui des <strong>programmes à accès spécial</strong>,
+                    souvent appelés <strong>“Black Projects”</strong>. Dans cet univers opaque, certains noms
+                    circulent de manière récurrente. Parmi eux, le projet <strong>“Sentinel”</strong>.
+                </p>
+                <p>
+                    S’agit-il d’un simple réseau de surveillance satellitaire ou du nom de code
+                    d’une nouvelle génération d’appareils humains défiant les lois de la physique ?
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>L’Antigravité : Le Graal Technologique</h3>
+                <p>
+                    Depuis des décennies, des chercheurs et des lanceurs d’alerte suggèrent que l’humanité
+                    tente de reproduire les systèmes de propulsion observés sur les phénomènes non identifiés.
+                </p>
+                <p>• <strong>Propulsion sans inertie :</strong> prototypes capables de virages à angle droit ou d’accélérations instantanées.</p>
+                <p>• <strong>Réduction de masse :</strong> utilisation possible de plasmas rotatifs pour “annuler” la gravité autour de l’appareil.</p>
+                <p>• <strong>Niveau humain :</strong> engins pilotables, souvent décrits comme des triangles noirs silencieux.</p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>Le lien avec mon expérience de 1974</h3>
+                <p>
+                    Ce qui me frappe dans ces recherches, c’est la corrélation avec ce que j’ai vécu.
+                    Le tunnel de couleurs et la vitesse extrême que j’ai ressentie ne sont pas sans rappeler
+                    les théories sur la distorsion de l’espace-temps.
+                </p>
+                <p>
+                    Si le projet Sentinel ou ses équivalents cherchent à maîtriser ces forces,
+                    ils ne font peut-être que tenter de copier une technologie qui nous a déjà visités
+                    il y a bien longtemps, au <strong>7 Avenue Caroline</strong>.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>En quête de preuves</h3>
+                <p>
+                    Dans cette section “Faits Divers”, nous explorerons les fuites de documents,
+                    les brevets déposés par la Navy et les témoignages sur ces prototypes secrets
+                    qui surveillent nos cieux sous le nom de “Sentinelles”.
+                </p>
+            </div>
+        </div>
+
+        <div id="modal-cas-2">
+            <div class="recit-step">
+                <img src="images/visualisation-creative.png" alt="Visualisation créatrice" class="recit-image">
+                <div class="recit-text-box">
+                    <h3>🧠 Visualisation Créatrice & Conscience</h3>
+                    <p>
+                        Une technique mentale puissante qui interroge notre rapport à la perception,
+                        à l’imaginaire, à la transformation intérieure et à la réalité elle-même.
+                    </p>
+                </div>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>🌌 Visualisation Créatrice & Conscience : Explorer les capacités cachées de l’esprit</h3>
+                <p>
+                    Dans notre réalité quotidienne, nous avons tendance à croire que tout ce que nous percevons
+                    est limité à nos cinq sens… Mais si notre esprit était capable d’aller bien au-delà ? 🤔
+                </p>
+                <p>
+                    La <strong>visualisation créatrice</strong> est une technique mentale puissante utilisée depuis
+                    des décennies, voire des siècles sous différentes formes, pour influencer notre perception,
+                    notre état intérieur et parfois même notre réalité.
+                </p>
+                <p>
+                    Elle repose sur un principe fascinant : 👉 <strong>ce que l’esprit imagine intensément,
+                    le cerveau commence à le considérer comme réel.</strong>
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>📘 Une pratique entre science et développement personnel</h3>
+                <p>
+                    Popularisée notamment par <strong>Shakti Gawain</strong>, la visualisation créatrice consiste
+                    à utiliser l’imagination de manière consciente pour : ✨ créer des images mentales précises,
+                    ✨ ressentir des émotions associées, ✨ programmer l’esprit vers un objectif ou une transformation.
+                </p>
+                <p>
+                    Aujourd’hui, cette technique est utilisée dans de nombreux domaines :
+                    🎯 sport de haut niveau, 🧠 psychologie, 💼 performance professionnelle,
+                    🧘‍♂️ méditation et développement personnel.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>⚡ Le pouvoir de l’imagination dirigée</h3>
+                <p>
+                    La visualisation créatrice ne consiste pas simplement à rêver… C’est un <strong>processus actif
+                    et structuré</strong>. Elle peut inclure :
+                </p>
+                <p>🔹 la projection mentale d’un objectif atteint</p>
+                <p>🔹 la répétition d’images positives</p>
+                <p>🔹 l’utilisation d’affirmations</p>
+                <p>🔹 la création d’un univers intérieur détaillé</p>
+                <p>
+                    Avec le temps, cette pratique peut renforcer la confiance, améliorer la concentration,
+                    modifier certains schémas mentaux et influencer la prise de décision.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>🌌 Une frontière avec l’inconnu…</h3>
+                <p>
+                    Ce qui rend ce sujet encore plus fascinant, c’est son lien possible avec certains phénomènes inexpliqués.
+                    Certaines personnes ayant vécu des expériences intenses décrivent :
+                    🌈 des tunnels lumineux, ⚡ des sensations de déplacement rapide,
+                    👁️ des états de conscience modifiés, 🌀 une perception du temps altérée.
+                </p>
+                <p>
+                    Cela pose une question profonde :
+                    👉 <strong>et si la conscience pouvait accéder à d’autres niveaux de réalité ?</strong>
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>🎥 Ressources et approfondissement</h3>
+                <p>Approfondis ce thème avec ces contenus :</p>
+                <a href="https://www.youtube.com/watch?v=BOTLKyd3XR0" target="_blank" class="resource-button">
+                    ▶ Voir la vidéo YouTube
+                </a>
+                <br><br>
+                <a href="https://www.tiktok.com/@mickael8881/photo/7622933703467027734?lang=fr" target="_blank" class="resource-button" style="background:#000;">
+                    🎵 Voir le contenu TikTok
+                </a>
+            </div>
+        </div>
+
+        <div id="modal-cas-3">
+            <div class="recit-text-only">
+                <h3>🧠 Et si la réalité n’était qu’une illusion ?</h3>
+                <p>
+                    Depuis toujours, l’être humain tente de comprendre le monde qui l’entoure…
+                    Mais une question dérangeante revient de plus en plus dans les recherches modernes :
+                    👉 <strong>vivons-nous réellement dans une réalité objective… ou dans une forme de simulation ?</strong>
+                </p>
+                <p>
+                    Cette idée, longtemps considérée comme de la science-fiction, est aujourd’hui étudiée sérieusement
+                    par des chercheurs, des philosophes… et même des ingénieurs de la Silicon Valley.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>📘 Une enquête contemporaine : la théorie de la simulation</h3>
+                <p>
+                    Le journaliste et auteur <strong>Loïc Hecht</strong>, dans son ouvrage
+                    <strong>“La Simulation, enquête sur la théorie qui fascine la Silicon Valley”</strong>
+                    (éditions Les Arènes, 384 pages, avril 2026), mène une enquête fascinante sur cette hypothèse.
+                </p>
+                <p>
+                    Son travail explore une idée vertigineuse :
+                    👉 <strong>notre univers pourrait être une construction, une simulation avancée,
+                    générée par une intelligence inconnue.</strong>
+                </p>
+                <p>
+                    Au fil de son enquête, il se confronte à l’un des plus grands mystères :
+                    🧠 <strong>la nature de la conscience</strong>.
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>⚡ Une hypothèse qui dépasse la science-fiction</h3>
+                <p>
+                    Cette théorie rejoint des réflexions menées par 💻 des ingénieurs en intelligence artificielle,
+                    🧠 des neuroscientifiques et 🌌 des physiciens.
+                </p>
+                <p>
+                    Certains suggèrent que :
+                </p>
+                <p>• notre réalité pourrait fonctionner comme un système d’information</p>
+                <p>• notre perception serait une interface</p>
+                <p>• notre conscience serait une clé d’accès</p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>🌌 Le lien avec l’expérience vécue</h3>
+                <p>
+                    Certaines expériences humaines décrivent 🌈 des tunnels lumineux, ⚡ des déplacements instantanés,
+                    🌀 des ruptures du temps, 👁️ une conscience détachée du corps.
+                </p>
+                <p>
+                    Ces éléments rappellent fortement une idée :
+                    <strong>comme si la réalité pouvait changer de niveau ou se reconfigurer.</strong>
+                </p>
+            </div>
+
+            <div class="recit-text-only">
+                <h3>🚀 Conclusion</h3>
+                <p>
+                    Ce sujet nous pousse à reconsidérer tout ce que nous croyons savoir :
+                    🧠 notre esprit, 🌌 notre univers, ⚡ notre existence.
+                </p>
+                <p>
+                    Et peut-être que la vraie question n’est pas :
+                    “Est-ce réel ?”
+                    mais plutôt :
+                    👉 <strong>qu’est-ce que le réel, au fond ?</strong>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -921,6 +1180,8 @@
         }
 
         function openNav(navId, clickedBtn = null) {
+            closeFactModal();
+
             document.querySelectorAll('.submenu-area').forEach(nav => nav.style.display = 'none');
 
             const targetNav = document.getElementById(navId);
@@ -943,6 +1204,7 @@
         }
 
         function showPage(pageId) {
+            closeFactModal();
             document.querySelectorAll('.content-section').forEach(page => {
                 page.classList.remove('active');
             });
@@ -952,6 +1214,60 @@
                 targetPage.classList.add('active');
             }
         }
+
+        function openFactModal(sourceId, title) {
+            const source = document.getElementById(sourceId);
+            const modal = document.getElementById('factModal');
+            const modalBody = document.getElementById('modalBody');
+            const modalTitle = document.getElementById('modalTitle');
+
+            if (!source || !modal || !modalBody || !modalTitle) return;
+
+            document.querySelectorAll('.content-section').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            modalTitle.textContent = title;
+            modalBody.innerHTML = source.innerHTML;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            if (window.innerWidth <= 850) {
+                document.getElementById('mainMenu').classList.remove('open');
+            }
+        }
+
+        function closeFactModal() {
+            const modal = document.getElementById('factModal');
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function returnToHome() {
+            closeFactModal();
+            document.querySelectorAll('.submenu-area').forEach(nav => nav.style.display = 'none');
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+
+            const homeBtn = document.getElementById('homeMainBtn');
+            if (homeBtn) homeBtn.classList.add('active');
+
+            showPage('page-accueil');
+        }
+
+        function handleOverlayClose(event) {
+            const modalWindow = document.querySelector('.modal-window');
+            if (modalWindow && !modalWindow.contains(event.target)) {
+                closeFactModal();
+                returnToHome();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFactModal();
+            }
+        });
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
