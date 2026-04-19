@@ -505,6 +505,64 @@
         .modal-source {
             display: none;
         }
+.visitor-box {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    
+    background: rgba(0, 210, 255, 0.05);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 16px;
+    padding: 15px 25px;
+    display: inline-block;
+
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+}
+.eye {
+    font-size: 1.5rem;
+    margin-right: 6px;
+}
+
+.visitor-text {
+    color: #8da9c4;
+}
+
+.visitor-count {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #00d2ff;
+    text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.visitor-box {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.eye {
+    font-size: 1.5rem;
+    margin-right: 6px;
+}
+
+.visitor-text {
+    color: #8da9c4;
+}
+
+.visitor-count {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #00d2ff;
+    text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
 
         @media (max-width: 980px) {
             .container {
@@ -633,10 +691,13 @@
         <img src="images/logo-phenomena.jpeg" alt="Logo Phenomena" class="header-image">
 
         <h1>Projet Phenomena</h1>
-        <p class="subtitle">Investigation • Mémoire • Parole Libre</p>
-    <div style="text-align:center; margin-top:20px;">
-    👁️ Visiteurs : <span id="visits">...</span>
-</div>    
+<p class="subtitle">Investigation • Mémoire • Parole Libre</p>
+
+<div class="visitor-box">
+    <span class="eye">👁️</span>
+    <span class="visitor-text">Visiteurs</span>
+    <span id="visits" class="visitor-count">0</span>
+</div>
         <div id="page-accueil" class="content-section active">
             <div class="lead-box">
                 <p>
@@ -1315,7 +1376,17 @@ get(visitRef).then((snapshot) => {
         sessionStorage.setItem("phenomena_visited", "true");
     }
 
-    document.getElementById("visits").innerText = count;
+    const visitsEl = document.getElementById("visits");
+visitsEl.innerText = count;
+
+// Animation
+visitsEl.style.transform = "scale(1.5)";
+visitsEl.style.textShadow = "0 0 25px #00d2ff, 0 0 50px #00d2ff";
+
+setTimeout(() => {
+    visitsEl.style.transform = "scale(1)";
+    visitsEl.style.textShadow = "0 0 10px #00d2ff, 0 0 20px #00d2ff";
+}, 400);
 }).catch((error) => {
     console.error("Erreur Firebase :", error);
     document.getElementById("visits").innerText = "...";
