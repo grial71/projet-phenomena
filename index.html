@@ -634,7 +634,7 @@
 
         <h1>Projet Phenomena</h1>
         <p class="subtitle">Investigation • Mémoire • Parole Libre</p>
-
+<p class="subtitle">Investigation • Mémoire • Parole Libre</p>
         <div id="page-accueil" class="content-section active">
             <div class="lead-box">
                 <p>
@@ -1280,7 +1280,18 @@
     </script>
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script data-goatcounter="https://phenomena.goatcounter.com/count"
+<script>
+fetch('https://phenomena.goatcounter.com/counter/phenomena.json')
+.then(res => res.json())
+.then(data => {
+    document.getElementById('visits').innerText = data.count;
+})
+.catch(() => {
+    document.getElementById('visits').innerText = '...';
+});
+</script>
+
+    <script data-goatcounter="https://phenomena.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
