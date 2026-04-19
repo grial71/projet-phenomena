@@ -1284,26 +1284,39 @@
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
 
-    <script data-goatcounter="https://phenomena.goatcounter.com/count"
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script data-goatcounter="https://phenomena.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
- <script>
-let alreadyCounted = sessionStorage.getItem('visited');
-let visits = localStorage.getItem('phenomena_visits');
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-database.js";
 
-if (!visits) {
-    visits = 0;
-}
+const firebaseConfig = {
+  apiKey: "AIzaSyABTXQpzkmbQ3tWkW0Mh-AeZqRY235ea1M",
+  authDomain: "phenomena-compteur.firebaseapp.com",
+  databaseURL: "https://phenomena-compteur-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "phenomena-compteur",
+  storageBucket: "phenomena-compteur.firebasestorage.app",
+  messagingSenderId: "311605861211",
+  appId: "1:311605861211:web:ef81d28cb20c5e456a987e"
+};
 
-visits = parseInt(visits);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const visitRef = ref(db, "visits");
 
-if (!alreadyCounted) {
-    visits++;
-    localStorage.setItem('phenomena_visits', visits);
-    sessionStorage.setItem('visited', 'true');
-}
+get(visitRef).then((snapshot) => {
+    let count = snapshot.val() || 0;
+    count++;
 
-document.getElementById('visits').innerText = visits;
+    set(visitRef, count);
+    document.getElementById("visits").innerText = count;
+}).catch((error) => {
+    console.error("Erreur Firebase :", error);
+    document.getElementById("visits").innerText = "...";
+});
 </script>
 
 </body>
