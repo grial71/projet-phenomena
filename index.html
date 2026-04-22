@@ -359,6 +359,16 @@
             margin-bottom: 20px;
         }
 
+        .resource-card h3 {
+            color: #00d2ff;
+            margin-bottom: 12px;
+        }
+
+        .resource-card p {
+            margin-bottom: 12px;
+            color: #dbe7f5;
+        }
+
         .resource-button {
             display: inline-block;
             background: #25D366;
@@ -424,7 +434,6 @@
             padding-top: 22px;
         }
 
-        /* Fenêtre modale Faits divers */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -505,64 +514,38 @@
         .modal-source {
             display: none;
         }
-.visitor-box {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    
-    background: rgba(0, 210, 255, 0.05);
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    border-radius: 16px;
-    padding: 15px 25px;
-    display: inline-block;
 
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-}
-.eye {
-    font-size: 1.5rem;
-    margin-right: 6px;
-}
+        .visitor-box {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 16px;
+            padding: 15px 25px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
 
-.visitor-text {
-    color: #8da9c4;
-}
+        .eye {
+            font-size: 1.5rem;
+            margin-right: 6px;
+        }
 
-.visitor-count {
-    display: inline-block;
-    margin-left: 8px;
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #00d2ff;
-    text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
+        .visitor-text {
+            color: #8da9c4;
+        }
 
-.visitor-box {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-}
-
-.eye {
-    font-size: 1.5rem;
-    margin-right: 6px;
-}
-
-.visitor-text {
-    color: #8da9c4;
-}
-
-.visitor-count {
-    display: inline-block;
-    margin-left: 8px;
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #00d2ff;
-    text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
+        .visitor-count {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #00d2ff;
+            text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
 
         @media (max-width: 980px) {
             .container {
@@ -691,13 +674,14 @@
         <img src="images/logo-phenomena.jpeg" alt="Logo Phenomena" class="header-image">
 
         <h1>Projet Phenomena</h1>
-<p class="subtitle">Investigation • Mémoire • Parole Libre</p>
+        <p class="subtitle">Investigation • Mémoire • Parole Libre</p>
 
-<div class="visitor-box">
-    <span class="eye">👁️</span>
-    <span class="visitor-text">Visiteurs</span>
-    <span id="visits" class="visitor-count">0</span>
-</div>
+        <div class="visitor-box">
+            <span class="eye">👁️</span>
+            <span class="visitor-text">Visiteurs</span>
+            <span id="visits" class="visitor-count">0</span>
+        </div>
+
         <div id="page-accueil" class="content-section active">
             <div class="lead-box">
                 <p>
@@ -949,6 +933,34 @@
                     in Voir la publication
                 </a>
             </div>
+
+            <div class="resource-card">
+    <h3>🎥 Analyse OVNI & Crop Circles</h3>
+
+    <p>
+        Cette vidéo explore les phénomènes OVNI et les crop circles avec une approche ouverte :
+        intelligence inconnue, conscience et perception.
+    </p>
+
+    <p>
+        Certains éléments évoqués rappellent fortement des expériences vécues :
+        lumière intense, paralysie, sensation de temps modifié.
+    </p>
+
+    <p>
+        Ces observations font écho à l’expérience décrite dans ce projet,
+        notamment le témoignage de 1974.
+    </p>
+
+    <a class="resource-button"
+       href="https://www.youtube.com/watch?v=N6HJB3AvZF0&t=2504s"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="background:#ff0000;">
+        ▶ Voir la vidéo complète
+    </a>
+</div>
+               
         </section>
 
         <div class="footer-note">
@@ -956,7 +968,6 @@
         </div>
     </div>
 
-    <!-- Fenêtre encadrée pour Faits divers -->
     <div id="factModal" class="modal-overlay" onclick="handleOverlayClose(event)">
         <div class="modal-window">
             <div class="modal-header">
@@ -970,7 +981,6 @@
         </div>
     </div>
 
-    <!-- Sources cachées des fenêtres Faits divers -->
     <div class="modal-source">
         <div id="modal-cas-overview">
             <div class="recit-text-only">
@@ -1173,9 +1183,7 @@
                     Cette théorie rejoint des réflexions menées par 💻 des ingénieurs en intelligence artificielle,
                     🧠 des neuroscientifiques et 🌌 des physiciens.
                 </p>
-                <p>
-                    Certains suggèrent que :
-                </p>
+                <p>Certains suggèrent que :</p>
                 <p>• notre réalité pourrait fonctionner comme un système d’information</p>
                 <p>• notre perception serait une interface</p>
                 <p>• notre conscience serait une clé d’accès</p>
@@ -1343,55 +1351,50 @@
     </script>
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
 
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-database.js";
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyABTXQpzkmbQ3tWkW0Mh-AeZqRY235ea1M",
+            authDomain: "phenomena-compteur.firebaseapp.com",
+            databaseURL: "https://phenomena-compteur-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "phenomena-compteur",
+            storageBucket: "phenomena-compteur.firebasestorage.app",
+            messagingSenderId: "311605861211",
+            appId: "1:311605861211:web:ef81d28cb20c5e456a987e"
+        };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyABTXQpzkmbQ3tWkW0Mh-AeZqRY235ea1M",
-  authDomain: "phenomena-compteur.firebaseapp.com",
-  databaseURL: "https://phenomena-compteur-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "phenomena-compteur",
-  storageBucket: "phenomena-compteur.firebasestorage.app",
-  messagingSenderId: "311605861211",
-  appId: "1:311605861211:web:ef81d28cb20c5e456a987e"
-};
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const visitRef = ref(db, "visits");
+        const alreadyCounted = sessionStorage.getItem("phenomena_visited");
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const visitRef = ref(db, "visits");
+        get(visitRef).then((snapshot) => {
+            let count = snapshot.val() || 0;
 
-const alreadyCounted = sessionStorage.getItem("phenomena_visited");
+            if (!alreadyCounted) {
+                count++;
+                set(visitRef, count);
+                sessionStorage.setItem("phenomena_visited", "true");
+            }
 
-get(visitRef).then((snapshot) => {
-    let count = snapshot.val() || 0;
+            const visitsEl = document.getElementById("visits");
+            visitsEl.innerText = count;
 
-    if (!alreadyCounted) {
-        count++;
-        set(visitRef, count);
-        sessionStorage.setItem("phenomena_visited", "true");
-    }
+            visitsEl.style.transform = "scale(1.5)";
+            visitsEl.style.textShadow = "0 0 25px #00d2ff, 0 0 50px #00d2ff";
 
-    const visitsEl = document.getElementById("visits");
-visitsEl.innerText = count;
-
-// Animation
-visitsEl.style.transform = "scale(1.5)";
-visitsEl.style.textShadow = "0 0 25px #00d2ff, 0 0 50px #00d2ff";
-
-setTimeout(() => {
-    visitsEl.style.transform = "scale(1)";
-    visitsEl.style.textShadow = "0 0 10px #00d2ff, 0 0 20px #00d2ff";
-}, 400);
-}).catch((error) => {
-    console.error("Erreur Firebase :", error);
-    document.getElementById("visits").innerText = "...";
-});
-</script>
+            setTimeout(() => {
+                visitsEl.style.transform = "scale(1)";
+                visitsEl.style.textShadow = "0 0 10px #00d2ff, 0 0 20px #00d2ff";
+            }, 400);
+        }).catch((error) => {
+            console.error("Erreur Firebase :", error);
+            document.getElementById("visits").innerText = "...";
+        });
+    </script>
 
 </body>
 </html>
