@@ -547,6 +547,28 @@
             transition: transform 0.3s ease, text-shadow 0.3s ease;
         }
 
+   .video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 24px auto 0;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 2px solid rgba(0, 210, 255, 0.45);
+    box-shadow: 0 0 28px rgba(0, 210, 255, 0.25);
+    background: rgba(0,0,0,0.35);
+}
+
+.video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}     
+
         @media (max-width: 980px) {
             .container {
                 padding: 34px;
@@ -960,7 +982,36 @@
         ▶ Voir la vidéo complète
     </a>
 </div>
-               
+          
+<div class="resource-card">
+    <h3>🎥 Reportage ancien — Mystères, disparitions et technologies sensibles</h3>
+
+    <p>
+        Ce reportage ancien revient sur des sujets troublants liés aux phénomènes inexpliqués,
+        aux recherches sensibles et aux zones d’ombre entourant certains dossiers scientifiques.
+    </p>
+
+    <p>
+        🧠 Entre témoignages, interrogations et hypothèses, ce contenu permet d’ouvrir une réflexion
+        prudente sur les liens possibles entre science, secret, conscience et technologies avancées.
+    </p>
+
+    <p>
+        ⚠️ Cette vidéo est présentée comme une source de réflexion, sans affirmation définitive.
+        L’objectif est d’analyser, comparer et questionner avec recul.
+    </p>
+
+    <div class="video-frame">
+        <iframe
+            src="https://www.youtube.com/embed/BORyaWR7Kfs"
+            title="Reportage ancien - Phenomena"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
         </section>
 
         <div class="footer-note">
