@@ -569,6 +569,56 @@
     height: 100%;
 }     
 
+.news-catalog {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 26px 0 34px;
+}
+
+.news-tile {
+    text-decoration: none;
+    color: #e7eef7;
+    background: rgba(0, 210, 255, 0.07);
+    border: 1px solid rgba(0, 210, 255, 0.28);
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+    transition: 0.25s;
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+}
+
+.news-tile:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 210, 255, 0.14);
+    box-shadow: 0 0 22px rgba(0, 210, 255, 0.28);
+}
+
+.news-tile span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.news-tile strong {
+    display: block;
+    color: #00d2ff;
+    text-transform: uppercase;
+    font-size: 0.92rem;
+}
+
+.news-tile small {
+    display: block;
+    margin-top: 6px;
+    color: #8da9c4;
+}
+
+@media (max-width: 850px) {
+    .news-catalog {
+        grid-template-columns: 1fr;
+    }
+}
+
         @media (max-width: 980px) {
             .container {
                 padding: 34px;
@@ -945,17 +995,111 @@
             </div>
         </div>
 
-        <div id="page-news" class="content-section">
+        <<div id="page-news" class="content-section">
     <h2>🆕 Dernières nouveautés & vidéos</h2>
 
     <div class="lead-box">
         <p>
             Cette section regroupe les nouvelles vidéos, reportages et réflexions ajoutés progressivement
-            au projet Phenomena. L’objectif est de conserver un fil d’actualité clair, structuré et évolutif.
+            au projet Phenomena. Chaque nouveauté est présentée avec un résumé clair, des pistes d’analyse
+            et une vidéo intégrée directement dans la page.
         </p>
     </div>
 
-    <div class="resource-card">
+    <div class="news-catalog">
+        <a href="#news-warp" class="news-tile">
+            <span>🛸</span>
+            <strong>OVNI & distorsion</strong>
+            <small>Le plus récent</small>
+        </a>
+
+        <a href="#news-time" class="news-tile">
+            <span>⏳</span>
+            <strong>Le temps : illusion ?</strong>
+            <small>Physique & conscience</small>
+        </a>
+
+        <a href="#news-reportage" class="news-tile">
+            <span>🎥</span>
+            <strong>Reportage ancien</strong>
+            <small>Archives & mystères</small>
+        </a>
+    </div>
+
+    <div id="news-warp" class="resource-card">
+        <h3>🛸 OVNI & distorsion de la réalité</h3>
+
+        <p>
+            🌌 Cette vidéo explore une hypothèse fascinante : certains phénomènes OVNI pourraient-ils
+            provoquer une forme de <strong>distorsion de la réalité</strong> autour d’eux ?
+        </p>
+
+        <p>
+            ⚡ Le thème évoque l’idée d’une “bulle de distorsion”, proche des concepts théoriques
+            de moteur à distorsion ou <strong>warp drive</strong>. Dans ce type d’hypothèse,
+            un objet ne se déplacerait pas simplement dans l’espace : il modifierait localement
+            les conditions de l’espace-temps autour de lui.
+        </p>
+
+        <p>
+            👁️ Cela peut faire écho à plusieurs éléments souvent rapportés dans les témoignages :
+            lumières intenses, silence anormal, disparition ou modification de repères,
+            sensation de temps altéré, perception étrange de l’environnement.
+        </p>
+
+        <p>
+            🧠 Pour le projet Phenomena, cette vidéo est intéressante car elle permet de relier
+            ton expérience de 1974 à une réflexion plus large : et si certains phénomènes
+            ne se contentaient pas d’être “vus”, mais modifiaient temporairement notre perception
+            du réel ?
+        </p>
+
+        <p>
+            ⚠️ Cette vidéo doit être présentée comme une piste d’analyse et non comme une preuve définitive.
+            L’objectif est de questionner, comparer et approfondir avec prudence.
+        </p>
+
+        <div class="video-frame">
+            <iframe
+                src="https://www.youtube.com/embed/1hsidXuLup0"
+                title="OVNI et distorsion de la réalité"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div id="news-time" class="resource-card">
+        <h3>⏳ Le temps : réalité ou illusion ?</h3>
+
+        <p>
+            ⏱️ Cette vidéo explore une question profonde : le temps est-il une réalité fondamentale
+            ou une construction liée à notre perception ?
+        </p>
+
+        <p>
+            🌌 Entre relativité, mécanique quantique et cosmologie, elle invite à réfléchir à la possibilité
+            que passé, présent et futur soient plus complexes qu’ils ne le paraissent.
+        </p>
+
+        <p>
+            🧠 Ce thème rejoint directement le projet Phenomena, notamment autour de la perception du temps,
+            des expériences de rupture temporelle et du rapport entre conscience et réalité.
+        </p>
+
+        <div class="video-frame">
+            <iframe
+                src="https://www.youtube.com/embed/WJaNHIXGQJ0"
+                title="Le temps - Réalité ou illusion"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div id="news-reportage" class="resource-card">
         <h3>🎥 Reportage ancien — Mystères, disparitions et technologies sensibles</h3>
 
         <p>
@@ -978,7 +1122,7 @@
             </iframe>
         </div>
     </div>
-
+</div>
     <div class="resource-card">
         <h3>⏳ Le temps : réalité ou illusion ?</h3>
 
