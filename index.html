@@ -547,77 +547,71 @@
             transition: transform 0.3s ease, text-shadow 0.3s ease;
         }
 
-   .video-frame {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 24px auto 0;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 18px;
-    border: 2px solid rgba(0, 210, 255, 0.45);
-    box-shadow: 0 0 28px rgba(0, 210, 255, 0.25);
-    background: rgba(0,0,0,0.35);
-}
+        .video-frame {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 24px auto 0;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 2px solid rgba(0, 210, 255, 0.45);
+            box-shadow: 0 0 28px rgba(0, 210, 255, 0.25);
+            background: rgba(0,0,0,0.35);
+        }
 
-.video-frame iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}     
+        .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-.news-catalog {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin: 26px 0 34px;
-}
+        .news-catalog {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin: 26px 0 34px;
+        }
 
-.news-tile {
-    text-decoration: none;
-    color: #e7eef7;
-    background: rgba(0, 210, 255, 0.07);
-    border: 1px solid rgba(0, 210, 255, 0.28);
-    border-radius: 18px;
-    padding: 18px;
-    text-align: center;
-    transition: 0.25s;
-    box-shadow: 0 0 18px rgba(0,0,0,0.25);
-}
+        .news-tile {
+            text-decoration: none;
+            color: #e7eef7;
+            background: rgba(0, 210, 255, 0.07);
+            border: 1px solid rgba(0, 210, 255, 0.28);
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            transition: 0.25s;
+            box-shadow: 0 0 18px rgba(0,0,0,0.25);
+        }
 
-.news-tile:hover {
-    transform: translateY(-2px);
-    background: rgba(0, 210, 255, 0.14);
-    box-shadow: 0 0 22px rgba(0, 210, 255, 0.28);
-}
+        .news-tile:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 210, 255, 0.14);
+            box-shadow: 0 0 22px rgba(0, 210, 255, 0.28);
+        }
 
-.news-tile span {
-    display: block;
-    font-size: 2rem;
-    margin-bottom: 8px;
-}
+        .news-tile span {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
 
-.news-tile strong {
-    display: block;
-    color: #00d2ff;
-    text-transform: uppercase;
-    font-size: 0.92rem;
-}
+        .news-tile strong {
+            display: block;
+            color: #00d2ff;
+            text-transform: uppercase;
+            font-size: 0.92rem;
+        }
 
-.news-tile small {
-    display: block;
-    margin-top: 6px;
-    color: #8da9c4;
-}
-
-@media (max-width: 850px) {
-    .news-catalog {
-        grid-template-columns: 1fr;
-    }
-}
+        .news-tile small {
+            display: block;
+            margin-top: 6px;
+            color: #8da9c4;
+        }
 
         @media (max-width: 980px) {
             .container {
@@ -671,6 +665,10 @@
 
             .submenu-btn {
                 width: 100%;
+            }
+
+            .news-catalog {
+                grid-template-columns: 1fr;
             }
 
             h1 {
@@ -743,9 +741,8 @@
         </div>
 
         <div id="nav-news" class="submenu-area">
-    <button class="submenu-btn" onclick="showPage('page-news')">Dernières nouveautés</button>
-</div>
-
+            <button class="submenu-btn" onclick="showPage('page-news')">Dernières nouveautés</button>
+        </div>
     </div>
 
     <div class="container">
@@ -995,314 +992,336 @@
             </div>
         </div>
 
-        <<div id="page-news" class="content-section">
-    <h2>🆕 Dernières nouveautés & vidéos</h2>
+        <div id="page-news" class="content-section">
+            <h2>🆕 Dernières nouveautés & vidéos</h2>
 
-    <div class="lead-box">
-        <p>
-            Cette section regroupe les nouvelles vidéos, reportages et réflexions ajoutés progressivement
-            au projet Phenomena. Chaque nouveauté est présentée avec un résumé clair, des pistes d’analyse
-            et une vidéo intégrée directement dans la page.
-        </p>
-    </div>
+            <div class="lead-box">
+                <p>
+                    Cette section regroupe les nouvelles vidéos, reportages et réflexions ajoutés progressivement
+                    au projet Phenomena. Les contenus sont classés du plus récent au plus ancien, avec une présentation
+                    claire, des emojis, une analyse écrite et une vidéo intégrée quand cela fonctionne.
+                </p>
+            </div>
 
-    <div class="news-catalog">
-        <a href="#news-warp" class="news-tile">
-            <span>🛸</span>
-            <strong>OVNI & distorsion</strong>
-            <small>Le plus récent</small>
-        </a>
+            <div class="news-catalog">
+                <a href="#news-janus-recherche" class="news-tile">
+                    <span>🧪</span>
+                    <strong>Recherche & Janus</strong>
+                    <small>Dernière nouveauté</small>
+                </a>
 
-        <a href="#news-time" class="news-tile">
-            <span>⏳</span>
-            <strong>Le temps : illusion ?</strong>
-            <small>Physique & conscience</small>
-        </a>
+                <a href="#news-szwe" class="news-tile">
+                    <span>🆕</span>
+                    <strong>Nouvelle enquête</strong>
+                    <small>Dernière vidéo ajoutée</small>
+                </a>
 
-        <a href="#news-reportage" class="news-tile">
-            <span>🎥</span>
-            <strong>Reportage ancien</strong>
-            <small>Archives & mystères</small>
-        </a>
-    </div>
+                <a href="#news-physics" class="news-tile">
+                    <span>⚛️</span>
+                    <strong>Physique avancée</strong>
+                    <small>Propulsion & espace-temps</small>
+                </a>
 
-    <div id="news-warp" class="resource-card">
-        <h3>🛸 OVNI & distorsion de la réalité</h3>
+                <a href="#news-disclosure" class="news-tile">
+                    <span>🏛️</span>
+                    <strong>Déclassification OVNI</strong>
+                    <small>USA & transparence</small>
+                </a>
 
-        <p>
-            🌌 Cette vidéo explore une hypothèse fascinante : certains phénomènes OVNI pourraient-ils
-            provoquer une forme de <strong>distorsion de la réalité</strong> autour d’eux ?
-        </p>
+                <a href="#news-warp" class="news-tile">
+                    <span>🛸</span>
+                    <strong>OVNI & distorsion</strong>
+                    <small>Espace-temps</small>
+                </a>
 
-        <p>
-            ⚡ Le thème évoque l’idée d’une “bulle de distorsion”, proche des concepts théoriques
-            de moteur à distorsion ou <strong>warp drive</strong>. Dans ce type d’hypothèse,
-            un objet ne se déplacerait pas simplement dans l’espace : il modifierait localement
-            les conditions de l’espace-temps autour de lui.
-        </p>
+                <a href="#news-time" class="news-tile">
+                    <span>⏳</span>
+                    <strong>Le temps</strong>
+                    <small>Réalité ou illusion</small>
+                </a>
 
-        <p>
-            👁️ Cela peut faire écho à plusieurs éléments souvent rapportés dans les témoignages :
-            lumières intenses, silence anormal, disparition ou modification de repères,
-            sensation de temps altéré, perception étrange de l’environnement.
-        </p>
+                <a href="#news-reportage" class="news-tile">
+                    <span>🎥</span>
+                    <strong>Reportage ancien</strong>
+                    <small>Mystères & archives</small>
+                </a>
+            </div>
 
-        <p>
-            🧠 Pour le projet Phenomena, cette vidéo est intéressante car elle permet de relier
-            ton expérience de 1974 à une réflexion plus large : et si certains phénomènes
-            ne se contentaient pas d’être “vus”, mais modifiaient temporairement notre perception
-            du réel ?
-        </p>
+            <div id="news-janus-recherche" class="resource-card">
+                <h3>🧪 Recherche d’informations : OVNI, masse négative et modèle Janus</h3>
 
-        <p>
-            ⚠️ Cette vidéo doit être présentée comme une piste d’analyse et non comme une preuve définitive.
-            L’objectif est de questionner, comparer et approfondir avec prudence.
-        </p>
+                <p>
+                    🛸 Cette nouvelle vidéo s’inscrit dans une ligne très importante du projet Phenomena :
+                    comprendre comment certaines informations liées aux OVNI, aux technologies avancées
+                    et aux hypothèses physiques alternatives circulent, sont analysées, puis parfois contestées.
+                </p>
 
-        <div class="video-frame">
-            <iframe
-                src="https://www.youtube.com/embed/1hsidXuLup0"
-                title="OVNI et distorsion de la réalité"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+                <p>
+                    🔍 Le thème central tourne autour d’une démarche de recherche : croiser les déclarations,
+                    identifier les sources, distinguer les faits vérifiables, les témoignages, les hypothèses
+                    scientifiques et les interprétations plus spéculatives.
+                </p>
+
+                <p>
+                    ⚛️ La vidéo semble aborder des notions liées à la <strong>masse négative</strong>,
+                    à l’<strong>énergie négative</strong>, à la propulsion non conventionnelle et à la possibilité
+                    d’une modification locale de l’espace-temps. Ces concepts sont parfois évoqués pour tenter
+                    d’expliquer des comportements attribués aux phénomènes OVNI : accélérations extrêmes,
+                    changements de direction soudains, silence anormal et absence de signature thermique classique.
+                </p>
+
+                <p>
+                    🌌 Ce sujet rejoint également les travaux associés au physicien Jean-Pierre Petit
+                    et au <strong>modèle cosmologique Janus</strong>, qui propose une réflexion autour de deux secteurs
+                    de matière, l’un à masse positive et l’autre à masse négative. Ce modèle reste discuté et controversé,
+                    mais il constitue une piste intéressante pour comprendre certaines hypothèses de physique avancée.
+                </p>
+
+                <p>
+                    🧠 Pour Phenomena, l’intérêt n’est pas d’affirmer une vérité définitive, mais de construire une
+                    méthode : observer, comparer, questionner, vérifier et replacer chaque information dans son niveau
+                    de fiabilité. C’est exactement ce qui permet de garder une approche sérieuse, même sur des sujets
+                    sensibles ou inhabituels.
+                </p>
+
+                <p>
+                    ⚠️ Cette vidéo doit donc être présentée comme une base d’analyse et d’enquête. Elle ouvre des pistes,
+                    mais elle ne remplace pas une validation scientifique officielle. L’objectif est de nourrir la réflexion
+                    avec prudence, curiosité et esprit critique.
+                </p>
+
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/o7QgdXdyCMM?start=1660"
+                        title="Recherche informations OVNI masse négative Janus"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <p style="margin-top:15px;">
+                    🔗 Si la vidéo ne s’affiche pas correctement, elle reste accessible directement sur YouTube.
+                </p>
+
+                <a href="https://www.youtube.com/watch?v=o7QgdXdyCMM&t=1660s"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="resource-button"
+                   style="background:#ff0000;">
+                    ▶ Voir la vidéo sur YouTube
+                </a>
+            </div>
+
+            <div id="news-szwe" class="resource-card">
+                <h3>🆕 Nouvelle vidéo — Analyse Phenomena</h3>
+
+                <p>
+                    🎥 Cette nouvelle vidéo vient enrichir la page des nouveautés avec un contenu à analyser
+                    dans l’esprit du projet Phenomena : observation, questionnement, conscience, réalité
+                    et phénomènes difficiles à expliquer.
+                </p>
+
+                <p>
+                    🧠 L’objectif est de replacer cette vidéo dans une démarche prudente :
+                    comprendre ce qui est présenté, repérer les idées fortes, comparer avec d’autres sources
+                    et éviter toute conclusion trop rapide.
+                </p>
+
+                <p>
+                    🔍 Comme pour les autres contenus, cette vidéo doit être considérée comme une piste
+                    de réflexion. Elle peut servir à nourrir le débat autour des phénomènes inexpliqués,
+                    des technologies avancées, de la perception et des limites de notre compréhension.
+                </p>
+
+                <p>
+                    ⚠️ Présentation à approfondir après vérification du thème exact de la vidéo.
+                </p>
+
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/SZweUhjd0Gc"
+                        title="Nouvelle vidéo Phenomena"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <p style="margin-top:15px;">
+                    🔗 Si la vidéo ne s’affiche pas correctement, elle reste accessible directement sur YouTube.
+                </p>
+
+                <a href="https://www.youtube.com/watch?v=SZweUhjd0Gc"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="resource-button"
+                   style="background:#ff0000;">
+                    ▶ Voir la vidéo sur YouTube
+                </a>
+            </div>
+
+            <div id="news-physics" class="resource-card">
+                <h3>⚛️ OVNI & physique avancée : masse négative, propulsion et espace-temps</h3>
+
+                <p>
+                    🛸 Cette vidéo explore une question centrale : certains phénomènes OVNI pourraient-ils utiliser
+                    une forme de propulsion totalement différente de nos technologies actuelles ?
+                </p>
+
+                <p>
+                    ⚡ Le contenu aborde des hypothèses liées à l’énergie négative, à la masse négative
+                    et à une possible manipulation locale de l’espace-temps. Ces idées pourraient expliquer
+                    certains comportements rapportés : accélérations fulgurantes, virages instantanés,
+                    silence anormal, absence de chaleur visible et déplacement sans inertie apparente.
+                </p>
+
+                <p>
+                    🔬 Cette réflexion rejoint les débats autour de modèles physiques alternatifs et ouvre une piste
+                    entre témoignages, science théorique et phénomènes inexpliqués.
+                </p>
+
+                <p>
+                    🧠 Pour le projet Phenomena, cette vidéo est importante car elle relie les observations,
+                    les sensations de distorsion, les ruptures temporelles et la question d’une technologie
+                    capable de modifier notre perception du réel.
+                </p>
+
+                <p>
+                    ⚠️ Cette vidéo est présentée comme une base d’analyse et d’hypothèses, pas comme une preuve définitive.
+                </p>
+
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/8WgdO5e1agc"
+                        title="OVNI et physique avancée"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <p style="margin-top:15px;">
+                    🔗 Si la vidéo ne s’affiche pas correctement, elle reste accessible directement sur YouTube.
+                </p>
+
+                <a href="https://www.youtube.com/watch?v=8WgdO5e1agc"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="resource-button"
+                   style="background:#ff0000;">
+                    ▶ Voir la vidéo sur YouTube
+                </a>
+            </div>
+
+            <div id="news-disclosure" class="resource-card">
+                <h3>🏛️ Déclassification OVNI : archives américaines, science et masse négative</h3>
+
+                <p>
+                    🛸 Cette vidéo revient sur la possibilité d’une plus grande transparence américaine
+                    autour des phénomènes aériens non identifiés.
+                </p>
+
+                <p>
+                    🇺🇸 Elle évoque les institutions, les témoignages de pilotes, les vidéos officielles,
+                    l’AARO et les débats autour de la déclassification.
+                </p>
+
+                <p>
+                    ⚠️ Comme c’est un live, on met uniquement le bouton direct pour éviter les erreurs d’intégration.
+                </p>
+
+                <a href="https://www.youtube.com/watch?v=sIeoPJpu9as"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="resource-button"
+                   style="background:#ff0000;">
+                    ▶ Voir le direct sur YouTube
+                </a>
+            </div>
+
+            <div id="news-warp" class="resource-card">
+                <h3>🛸 OVNI & distorsion de la réalité</h3>
+
+                <p>
+                    🌌 Cette vidéo explore l’idée que certains phénomènes OVNI pourraient provoquer une forme
+                    de distorsion de la réalité autour d’eux.
+                </p>
+
+                <p>
+                    ⚡ Elle évoque la notion de bulle de distorsion, proche des concepts théoriques de moteur
+                    à distorsion, où l’espace-temps serait modifié localement.
+                </p>
+
+                <p>
+                    👁️ Cela fait écho aux témoignages parlant de lumières intenses, silence anormal,
+                    perception étrange et temps altéré.
+                </p>
+
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/1hsidXuLup0"
+                        title="OVNI et distorsion de la réalité"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div id="news-time" class="resource-card">
+                <h3>⏳ Le temps : réalité ou illusion ?</h3>
+
+                <p>
+                    ⏱️ Cette vidéo explore une question profonde : le temps est-il une réalité fondamentale
+                    ou une construction liée à notre perception ?
+                </p>
+
+                <p>
+                    🌌 Entre relativité, mécanique quantique et cosmologie, elle invite à réfléchir à la possibilité
+                    que passé, présent et futur soient plus complexes qu’ils ne le paraissent.
+                </p>
+
+                <p>
+                    🧠 Ce thème rejoint directement le projet Phenomena, notamment autour de la perception du temps,
+                    des expériences de rupture temporelle et du rapport entre conscience et réalité.
+                </p>
+
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/WJaNHIXGQJ0"
+                        title="Le temps - Réalité ou illusion"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div id="news-reportage" class="resource-card">
+                <h3>🎥 Reportage ancien — Mystères, disparitions et technologies sensibles</h3>
+
+                <p>
+                    🧠 Ce reportage ancien revient sur des sujets liés aux phénomènes inexpliqués,
+                    aux recherches sensibles et aux zones d’ombre entourant certains dossiers scientifiques.
+                </p>
+
+                <p>
+                    🔍 Il permet d’ouvrir une réflexion prudente entre science, secret, conscience
+                    et technologies avancées.
+                </p>
+
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/BORyaWR7Kfs"
+                        title="Reportage ancien - Phenomena"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="news-time" class="resource-card">
-        <h3>⏳ Le temps : réalité ou illusion ?</h3>
-
-        <p>
-            ⏱️ Cette vidéo explore une question profonde : le temps est-il une réalité fondamentale
-            ou une construction liée à notre perception ?
-        </p>
-
-        <p>
-            🌌 Entre relativité, mécanique quantique et cosmologie, elle invite à réfléchir à la possibilité
-            que passé, présent et futur soient plus complexes qu’ils ne le paraissent.
-        </p>
-
-        <p>
-            🧠 Ce thème rejoint directement le projet Phenomena, notamment autour de la perception du temps,
-            des expériences de rupture temporelle et du rapport entre conscience et réalité.
-        </p>
-
-        <div class="video-frame">
-            <iframe
-                src="https://www.youtube.com/embed/WJaNHIXGQJ0"
-                title="Le temps - Réalité ou illusion"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-
-    <div id="page-news" class="content-section">
-    <h2>🆕 Dernières nouveautés & vidéos</h2>
-
-    <div class="lead-box">
-        <p>
-            Cette section regroupe les nouvelles vidéos, reportages et réflexions ajoutés progressivement
-            au projet Phenomena. Les contenus sont classés du plus récent au plus ancien, avec une présentation
-            claire, des emojis, une analyse écrite et une vidéo intégrée quand cela fonctionne.
-        </p>
-    </div>
-
-    <div class="news-catalog">
-        <a href="#news-physics" class="news-tile">
-            <span>⚛️</span>
-            <strong>Physique avancée</strong>
-            <small>Dernière nouveauté</small>
-        </a>
-
-        <a href="#news-disclosure" class="news-tile">
-            <span>🏛️</span>
-            <strong>Déclassification OVNI</strong>
-            <small>USA & transparence</small>
-        </a>
-
-        <a href="#news-warp" class="news-tile">
-            <span>🛸</span>
-            <strong>OVNI & distorsion</strong>
-            <small>Espace-temps</small>
-        </a>
-
-        <a href="#news-time" class="news-tile">
-            <span>⏳</span>
-            <strong>Le temps</strong>
-            <small>Réalité ou illusion</small>
-        </a>
-
-        <a href="#news-reportage" class="news-tile">
-            <span>🎥</span>
-            <strong>Reportage ancien</strong>
-            <small>Mystères & archives</small>
-        </a>
-    </div>
-
-    <div id="news-physics" class="resource-card">
-        <h3>⚛️ OVNI & physique avancée : masse négative, propulsion et espace-temps</h3>
-
-        <p>
-            🛸 Cette vidéo explore une question centrale : certains phénomènes OVNI pourraient-ils utiliser
-            une forme de propulsion totalement différente de nos technologies actuelles ?
-        </p>
-
-        <p>
-            ⚡ Le contenu aborde des hypothèses liées à l’énergie négative, à la masse négative
-            et à une possible manipulation locale de l’espace-temps. Ces idées pourraient expliquer
-            certains comportements rapportés : accélérations fulgurantes, virages instantanés,
-            silence anormal, absence de chaleur visible et déplacement sans inertie apparente.
-        </p>
-
-        <p>
-            🔬 Cette réflexion rejoint les débats autour de modèles physiques alternatifs et ouvre une piste
-            entre témoignages, science théorique et phénomènes inexpliqués.
-        </p>
-
-        <p>
-            🧠 Pour le projet Phenomena, cette vidéo est importante car elle relie les observations,
-            les sensations de distorsion, les ruptures temporelles et la question d’une technologie
-            capable de modifier notre perception du réel.
-        </p>
-
-        <p>
-            ⚠️ Cette vidéo est présentée comme une base d’analyse et d’hypothèses, pas comme une preuve définitive.
-        </p>
-
-        <div class="video-frame">
-            <iframe
-                src="https://www.youtube.com/embed/8WgdO5e1agc"
-                title="OVNI et physique avancée"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <p style="margin-top:15px;">
-            🔗 Si la vidéo ne s’affiche pas correctement, elle reste accessible directement sur YouTube.
-        </p>
-
-        <a href="https://www.youtube.com/watch?v=8WgdO5e1agc"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="resource-button"
-           style="background:#ff0000;">
-            ▶ Voir la vidéo sur YouTube
-        </a>
-    </div>
-
-    <div id="news-disclosure" class="resource-card">
-        <h3>🏛️ Déclassification OVNI : archives américaines, science et masse négative</h3>
-
-        <p>
-            🛸 Cette vidéo revient sur la possibilité d’une plus grande transparence américaine
-            autour des phénomènes aériens non identifiés.
-        </p>
-
-        <p>
-            🇺🇸 Elle évoque les institutions, les témoignages de pilotes, les vidéos officielles,
-            l’AARO et les débats autour de la déclassification.
-        </p>
-
-        <p>
-            ⚠️ Comme c’est un live, on met uniquement le bouton direct pour éviter les erreurs d’intégration.
-        </p>
-
-        <a href="https://www.youtube.com/watch?v=sIeoPJpu9as"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="resource-button"
-           style="background:#ff0000;">
-            ▶ Voir le direct sur YouTube
-        </a>
-    </div>
-
-    <div id="news-warp" class="resource-card">
-        <h3>🛸 OVNI & distorsion de la réalité</h3>
-
-        <p>
-            🌌 Cette vidéo explore l’idée que certains phénomènes OVNI pourraient provoquer une forme
-            de distorsion de la réalité autour d’eux.
-        </p>
-
-        <p>
-            ⚡ Elle évoque la notion de bulle de distorsion, proche des concepts théoriques de moteur
-            à distorsion, où l’espace-temps serait modifié localement.
-        </p>
-
-        <p>
-            👁️ Cela fait écho aux témoignages parlant de lumières intenses, silence anormal,
-            perception étrange et temps altéré.
-        </p>
-
-        <div class="video-frame">
-            <iframe
-                src="https://www.youtube.com/embed/1hsidXuLup0"
-                title="OVNI et distorsion de la réalité"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-
-    <div id="news-time" class="resource-card">
-        <h3>⏳ Le temps : réalité ou illusion ?</h3>
-
-        <p>
-            ⏱️ Cette vidéo explore une question profonde : le temps est-il une réalité fondamentale
-            ou une construction liée à notre perception ?
-        </p>
-
-        <p>
-            🌌 Entre relativité, mécanique quantique et cosmologie, elle invite à réfléchir à la possibilité
-            que passé, présent et futur soient plus complexes qu’ils ne le paraissent.
-        </p>
-
-        <p>
-            🧠 Ce thème rejoint directement le projet Phenomena, notamment autour de la perception du temps,
-            des expériences de rupture temporelle et du rapport entre conscience et réalité.
-        </p>
-
-        <div class="video-frame">
-            <iframe
-                src="https://www.youtube.com/embed/WJaNHIXGQJ0"
-                title="Le temps - Réalité ou illusion"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-
-    <div id="news-reportage" class="resource-card">
-        <h3>🎥 Reportage ancien — Mystères, disparitions et technologies sensibles</h3>
-
-        <p>
-            🧠 Ce reportage ancien revient sur des sujets liés aux phénomènes inexpliqués,
-            aux recherches sensibles et aux zones d’ombre entourant certains dossiers scientifiques.
-        </p>
-
-        <p>
-            🔍 Il permet d’ouvrir une réflexion prudente entre science, secret, conscience
-            et technologies avancées.
-        </p>
-
-        <div class="video-frame">
-            <iframe
-                src="https://www.youtube.com/embed/BORyaWR7Kfs"
-                title="Reportage ancien - Phenomena"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</div>
 
         <section class="resources-section" style="margin-top: 20px;">
             <div class="resource-card">
@@ -1322,35 +1341,31 @@
             </div>
 
             <div class="resource-card">
-    <h3>🎥 Analyse OVNI & Crop Circles</h3>
+                <h3>🎥 Analyse OVNI & Crop Circles</h3>
 
-    <p>
-        Cette vidéo explore les phénomènes OVNI et les crop circles avec une approche ouverte :
-        intelligence inconnue, conscience et perception.
-    </p>
+                <p>
+                    Cette vidéo explore les phénomènes OVNI et les crop circles avec une approche ouverte :
+                    intelligence inconnue, conscience et perception.
+                </p>
 
-    <p>
-        Certains éléments évoqués rappellent fortement des expériences vécues :
-        lumière intense, paralysie, sensation de temps modifié.
-    </p>
+                <p>
+                    Certains éléments évoqués rappellent fortement des expériences vécues :
+                    lumière intense, paralysie, sensation de temps modifié.
+                </p>
 
-    <p>
-        Ces observations font écho à l’expérience décrite dans ce projet,
-        notamment le témoignage de 1974.
-    </p>
+                <p>
+                    Ces observations font écho à l’expérience décrite dans ce projet,
+                    notamment le témoignage de 1974.
+                </p>
 
-    <a class="resource-button"
-       href="https://www.youtube.com/watch?v=N6HJB3AvZF0&t=2504s"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="background:#ff0000;">
-        ▶ Voir la vidéo complète
-    </a>
-</div>
-          
-
-</div>
-
+                <a class="resource-button"
+                   href="https://www.youtube.com/watch?v=N6HJB3AvZF0&t=2504s"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   style="background:#ff0000;">
+                    ▶ Voir la vidéo complète
+                </a>
+            </div>
         </section>
 
         <div class="footer-note">
